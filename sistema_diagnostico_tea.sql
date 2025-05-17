@@ -1,3 +1,6 @@
+CREATE DATABASE ConsultaDB;
+
+USE ConsultaDB;
 
 CREATE TABLE roles (
   id_rol INT AUTO_INCREMENT PRIMARY KEY,
