@@ -3,40 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\.gitignore||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:.gitignore||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\consentimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\consentimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\respuestaopcion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\respuestaopcion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\resultadotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\resultadotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\respuestapaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\respuestapaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\pregunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\pregunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\pc\\desktop\\uni-adir\\appclinica\\models\\especialista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\especialista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,125 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Paciente.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Paciente.cs",
+              "RelativeDocumentMoniker": "Models\\Paciente.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Paciente.cs",
+              "RelativeToolTip": "Models\\Paciente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T17:41:07.698Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVDhPjVNLTgJBEG1lwpoFB3GNK9fieA48hD8iwT/ihwgSDAIHgAGXXsEV18CNzL/LquqZdsYM6kteXqcy3fWqpmpNRBgOhyABBEgpAFVKPIMUcYzUyOU\u002BXM/b2qtU3vkSfRjjZTCAMAw1A2LwzdFoBPP5HNqdzuL27n4juibWI\u002BUshBA1DIkhEx9iEorFotgslQqGYbxxAGFEqt1MxmPWJLbLZdZ\u002Bv89q5PMFPiTR6z2zdaxR0fXA0XTBcVywkb4fwHXjRteecIDNQ7UmExVYAdPcxYaqclN46na5WenMKjtlVnTYwcXlVYaDqImW9beD5N/TeGy32QHXm6hZ03ZgiSQHp2fnWQ4oBmJqWSqwAqZpZjt4aLXAD4J0VqyZsmoubfB8H2r1eoaD6NXZ9HcHO\u002BSA3f4AjifXl8rItOETM8ckB9WTWpYD9RdeZ1PWVWAHWXPQaDb59f/w8LiqHeh1pvGkCaP6qB8yXusoxmuNZ7XmII4O9vGuEF86osuDYRkpYQAAAABJRU5ErkJggg==",
-              "WhenOpened": "2025-05-23T16:09:32.28Z",
+              "Title": "Consentimiento.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Consentimiento.cs",
+              "RelativeDocumentMoniker": "Models\\Consentimiento.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Consentimiento.cs",
+              "RelativeToolTip": "Models\\Consentimiento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T17:40:25.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Especialista.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Especialista.cs",
+              "RelativeDocumentMoniker": "Models\\Especialista.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Especialista.cs",
+              "RelativeToolTip": "Models\\Especialista.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T17:39:31.477Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T06:37:07.433Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PacientesController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Controllers\\PacientesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PacientesController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Controllers\\PacientesController.cs",
-              "RelativeToolTip": "Controllers\\PacientesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:36:32.474Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:17:37.845Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-23T06:29:42.62Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ResultadoTest.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\ResultadoTest.cs",
-              "RelativeDocumentMoniker": "Models\\ResultadoTest.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\ResultadoTest.cs",
-              "RelativeToolTip": "Models\\ResultadoTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:12:00.641Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RespuestaPaciente.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaPaciente.cs",
-              "RelativeDocumentMoniker": "Models\\RespuestaPaciente.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaPaciente.cs",
-              "RelativeToolTip": "Models\\RespuestaPaciente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:11:11.997Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RespuestaOpcion.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaOpcion.cs",
-              "RelativeDocumentMoniker": "Models\\RespuestaOpcion.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaOpcion.cs",
-              "RelativeToolTip": "Models\\RespuestaOpcion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:10:42.981Z",
+              "WhenOpened": "2025-05-23T17:39:17.433Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Pregunta.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Pregunta.cs",
-              "RelativeDocumentMoniker": "Models\\Pregunta.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\Pregunta.cs",
-              "RelativeToolTip": "Models\\Pregunta.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\uni-ADIR\\AppClinica\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "Models\\AppDbContext.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA6wEEAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:10:00.726Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "WhenOpened": "2025-05-23T17:38:31.856Z",
+              "EditorCaption": ""
             }
           ]
         }

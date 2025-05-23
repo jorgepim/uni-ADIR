@@ -7,6 +7,8 @@ namespace AppClinica.Models
         [Key]
         public int IdUsuario { get; set; }
 
+        public int? IdConsentimiento { get; set; }
+
         public string NombreUsuario { get; set; } = string.Empty;
 
         public string Correo { get; set; } = string.Empty;
@@ -19,8 +21,10 @@ namespace AppClinica.Models
 
         public DateTime FechaCreacion { get; set; }
 
-        // Relaciones
         public Rol Rol { get; set; }
+
+        public Consentimiento? Consentimiento { get; set; }
+
         public Especialista Especialista { get; set; }
     }
 }
