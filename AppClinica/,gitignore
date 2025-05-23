@@ -1,0 +1,75 @@
+#################
+# fuente compilada #
+#################
+*.com
+*.clase
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.cache
+*.suo
+# Incluya dlls si están en el directorio de paquetes NuGet
+¡!/paquetes/*/lib/*.dll
+¡!/paquetes/*/lib/*/*.dll
+# Incluya dlls si están en el directorio CommonReferences
+¡!*Referencias Comunes/*.dll
+##################
+# VS Actualizar cosas #
+##################
+ActualizarLog.XML
+_UpgradeReport_Archivos/
+#############
+# Directorios #
+#############
+bin/
+objecto/
+TestResultados/
+#################
+# Registro de publicación web #
+#################
+*.Publicar.xml
+###########
+# Resharper #
+###########
+/_ReSharper.*
+*.ReSharper.*
+##########
+# Paquetes #
+##########
+# es mejor desempacar estos archivos y comprometer la fuente sin procesar
+# git tiene sus propios métodos de compresión incorporados
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+###################
+# Registros y bases de datos #
+###################
+*.log
+*.sqlite
+# archivos generados por OS #
+###################
+.DS_Tienda¿?
+ehthumbs.db
+Icono¿?
+Pulgares.db
+[Bb]en
+[Oo]bj
+[Tt]est[Rr]esults
+*.suo
+*.usuario
+*.[Cc]dolor
+*[Rr]estharper*
+paquetes
+En.nuGet.exe
+_[Ss]código
+*.exe
+*.dll
+*.nupkg
+*.ncrunchsolución
+*.punto[Cc]sobre
