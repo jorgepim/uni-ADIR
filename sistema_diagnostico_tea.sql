@@ -9,15 +9,26 @@ CREATE TABLE Roles (
     NombreRol NVARCHAR(50) NOT NULL
 );
 
+CREATE TABLE Consentimientos (
+    IdConsentimiento INT IDENTITY(1,1) PRIMARY KEY,
+    Tipo NVARCHAR(50) NOT NULL, 
+    NombreFirmante NVARCHAR(200),
+    FechaConsentimiento DATETIME NOT NULL,
+    RutaArchivo NVARCHAR(300), 
+    EnviadoPorCorreo BIT NOT NULL DEFAULT 0
+);
+
 CREATE TABLE Usuarios (
     IdUsuario INT IDENTITY(1,1) PRIMARY KEY,
+    IdConsentimiento INT,
     NombreUsuario NVARCHAR(100) NOT NULL,
     Correo NVARCHAR(100) NOT NULL UNIQUE,
     Contrasena NVARCHAR(255) NOT NULL,
     RolId INT NOT NULL,
     Estado BIT NOT NULL,
     FechaCreacion DATETIME NOT NULL,
-    FOREIGN KEY (RolId) REFERENCES Roles(IdRol)
+    FOREIGN KEY (RolId) REFERENCES Roles(IdRol),
+    FOREIGN KEY (IdConsentimiento)  REFERENCES Consentimientos(IdConsentimiento)
 );
 
 CREATE TABLE Especialistas (
@@ -33,14 +44,18 @@ CREATE TABLE Especialistas (
 
 CREATE TABLE Pacientes (
     IdPaciente INT IDENTITY(1,1) PRIMARY KEY,
+    IdConsentimiento INT NOT NULL,
+    Correo NVARCHAR(100) NOT NULL UNIQUE,
     Nombres NVARCHAR(100) NOT NULL,
     Apellidos NVARCHAR(100) NOT NULL,
     FechaNacimiento DATE NOT NULL,
     Sexo CHAR(1) NOT NULL,
     IdEspecialista INT NOT NULL,
     FechaRegistro DATE NOT NULL,
-    FOREIGN KEY (IdEspecialista) REFERENCES Especialistas(IdEspecialista)
+    FOREIGN KEY (IdEspecialista) REFERENCES Especialistas(IdEspecialista),
+    FOREIGN KEY (IdConsentimiento) REFERENCES Consentimientos(IdConsentimiento)
 );
+
 
 CREATE TABLE Tests (
     IdTest INT IDENTITY(1,1) PRIMARY KEY,
