@@ -9,6 +9,7 @@
 *.dll.config
 *.cache
 *.suo
+.vs
 # Incluya dlls si están en el directorio de paquetes NuGet
 ¡!/paquetes/*/lib/*.dll
 ¡!/paquetes/*/lib/*/*.dll
