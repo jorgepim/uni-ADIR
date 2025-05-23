@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\models\\respuestaopcion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\respuestaopcion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\models\\resultadotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\resultadotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\models\\respuestapaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\respuestapaciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|c:\\users\\jorge\\desktop\\uni-adir\\appclinica\\models\\pregunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8ED64A3-24A9-4138-A170-92A7CC88239D}|AppClinica.csproj|solutionrelative:models\\pregunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-23T06:37:07.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PacientesController.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Controllers\\PacientesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PacientesController.cs",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Controllers\\PacientesController.cs",
+              "RelativeToolTip": "Controllers\\PacientesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T06:36:32.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T06:17:37.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-23T06:29:42.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ResultadoTest.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\ResultadoTest.cs",
+              "RelativeDocumentMoniker": "Models\\ResultadoTest.cs",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\ResultadoTest.cs",
+              "RelativeToolTip": "Models\\ResultadoTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T06:12:00.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RespuestaPaciente.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaPaciente.cs",
+              "RelativeDocumentMoniker": "Models\\RespuestaPaciente.cs",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaPaciente.cs",
+              "RelativeToolTip": "Models\\RespuestaPaciente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T06:11:11.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RespuestaOpcion.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaOpcion.cs",
+              "RelativeDocumentMoniker": "Models\\RespuestaOpcion.cs",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\RespuestaOpcion.cs",
+              "RelativeToolTip": "Models\\RespuestaOpcion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T06:10:42.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Pregunta.cs",
+              "DocumentMoniker": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\Pregunta.cs",
+              "RelativeDocumentMoniker": "Models\\Pregunta.cs",
+              "ToolTip": "C:\\Users\\jorge\\Desktop\\uni-ADIR\\AppClinica\\Models\\Pregunta.cs",
+              "RelativeToolTip": "Models\\Pregunta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T06:10:00.726Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
