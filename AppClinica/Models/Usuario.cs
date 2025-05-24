@@ -9,22 +9,22 @@ namespace AppClinica.Models
 
         public int? IdConsentimiento { get; set; }
 
-        public string NombreUsuario { get; set; } = string.Empty;
+        public string? NombreUsuario { get; set; } = string.Empty;
 
-        public string Correo { get; set; } = string.Empty;
+        public string? Correo { get; set; } = string.Empty;
 
-        public string Contrasena { get; set; } = string.Empty;
+        public string? Contrasena { get; set; } = string.Empty;
 
         public int RolId { get; set; }
 
-        public bool Estado { get; set; }
+        public bool? Estado { get; set; }
 
-        public DateTime FechaCreacion { get; set; }
+        public DateTime? FechaCreacion { get; set; }
 
-        public Rol Rol { get; set; }
+        public Rol? Rol { get; set; }
 
         public Consentimiento? Consentimiento { get; set; }
 
-        public Especialista Especialista { get; set; }
+        public Especialista? Especialista { get; set; }
     }
 }
