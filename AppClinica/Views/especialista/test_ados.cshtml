@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Evaluación ADOS-2";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
+}
+
+<style>
+    .form-container {
+        background-color: @grisClaro;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #1d3557;
+    }
+
+    h2 {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .section-title {
+        border-left: 5px solid @celeste;
+        padding-left: 10px;
+        margin-bottom: 1rem;
+        color: #1d3557;
+    }
+
+    .btn-outline-secondary {
+        border-color: @celeste;
+        color: #1d3557;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: @celeste;
+            color: #fff;
+        }
+
+    .btn-link {
+        color: #457b9d;
+        font-weight: 600;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container py-5">
+    <a asp-controller="especialista" asp-action="evaluar" class="btn btn-link mb-4">&larr; Volver</a>
+
+    <div class="form-container">
+        <h2 class="mb-4">Evaluación ADOS-2: Módulo 1</h2>
+
+        <form asp-action="GuardarAdos2" method="post">
+            <h3 class="section-title">Actividad: Juego Libre</h3>
+
+            <div class="mb-4">
+                <label class="form-label">Observaciones</label>
+                <textarea name="JuegoLibreObs" class="form-control" rows="3" placeholder="Observaciones..." required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Puntuación</label>
+                <select name="JuegoLibrePunt" class="form-select" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="0">0 - Sin anomalías</option>
+                    <option value="1">1 - Anomalía leve</option>
+                    <option value="2">2 - Anomalía moderada</option>
+                    <option value="3">3 - Anomalía severa</option>
+                </select>
+            </div>
+
+            <hr class="my-4" />
+
+            <h3 class="section-title">Actividad: Respuesta al Nombre</h3>
+
+            <div class="mb-4">
+                <label class="form-label">Observaciones</label>
+                <textarea name="NombreObs" class="form-control" rows="3" placeholder="Observaciones..." required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Puntuación</label>
+                <select name="NombrePunt" class="form-select" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="0">0 - Sin anomalías</option>
+                    <option value="1">1 - Anomalía leve</option>
+                    <option value="2">2 - Anomalía moderada</option>
+                    <option value="3">3 - Anomalía severa</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <a asp-controller="especialista" asp-action="evaluar" class="btn btn-outline-secondary me-2">Cancelar</a>
+                <button type="submit" class="btn btn-outline-secondary">Guardar Test</button>
+            </div>
+        </form>
+    </div>
+</div>
