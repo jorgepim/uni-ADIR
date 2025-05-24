@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Pregunta>
+
+@{
+    ViewData["Title"] = "Preguntas del Test ADOS-2";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-controller="admin" asp-action="Gestionar_tests" class="btn btn-outline-secondary">&larr; Volver a Tests</a>
+    </div>
+    <h2 class="h4 mb-4">Preguntas del Test ADOS-2</h2>
+
+    <div class="vstack gap-3">
+        @foreach (var pregunta in Model)
+        {
+            <div class="border rounded p-3">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <small class="text-primary">@pregunta.TipoRespuesta</small>
+                        <h5 class="mb-0 mt-1">@pregunta.TextoPregunta</h5>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a asp-action="Editar" asp-route-id="@pregunta.IdPregunta" class="btn btn-sm btn-outline-primary">Editar</a>
+                        <a asp-action="Eliminar" asp-route-id="@pregunta.IdPregunta" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Agregar" class="btn btn-primary">Agregar Nueva Pregunta</a>
+    </div>
+</div>
+
