@@ -74,6 +74,18 @@
 </head>
 <body>
 
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState[string.Empty].Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
     <div class="login-container">
         <div class="login-card">
             <h2 class="text-center">Iniciar Sesión</h2>
