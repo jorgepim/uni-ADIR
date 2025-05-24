@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Evaluación ADI-R";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
+}
+
+<style>
+    .form-container {
+        background-color: @grisClaro;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #1d3557;
+    }
+
+    h2 {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .section-title {
+        border-left: 5px solid @celeste;
+        padding-left: 10px;
+        margin-bottom: 1rem;
+        color: #1d3557;
+    }
+
+    .btn-outline-secondary {
+        border-color: @celeste;
+        color: #1d3557;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: @celeste;
+            color: #fff;
+        }
+
+    .btn-link {
+        color: #457b9d;
+        font-weight: 600;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container py-5">
+    <a asp-controller="especialista" asp-action="evaluar" class="btn btn-link mb-4">&larr; Volver</a>
+
+    <div class="form-container">
+        <h2 class="mb-4">ADI-R: Información del Cuidador</h2>
+
+        <form asp-action="GuardarAdir" method="post">
+            <div class="mb-3">
+                <label class="form-label">Relación con el paciente</label>
+                <input type="text" name="Relacion" class="form-control" placeholder="Ej. Madre, Padre, Tutor" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tiempo de conocer al paciente</label>
+                <input type="text" name="TiempoConocer" class="form-control" placeholder="Ej. 5 años, desde nacimiento" required />
+            </div>
+
+            <hr class="my-4" />
+
+            <h3 class="section-title">Desarrollo Temprano</h3>
+
+            <div class="mb-3">
+                <label class="form-label">Edad de las primeras palabras</label>
+                <select class="form-select" name="PrimerasPalabras" required>
+                    <option value="">Seleccionar...</option>
+                    <option>Antes de 12 meses</option>
+                    <option>12-24 meses</option>
+                    <option>Después de 24 meses</option>
+                    <option>Sin palabras aún</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Edad en que comenzó a caminar</label>
+                <select class="form-select" name="Caminar" required>
+                    <option value="">Seleccionar...</option>
+                    <option>Antes de 12 meses</option>
+                    <option>12-18 meses</option>
+                    <option>Después de 18 meses</option>
+                </select>
+            </div>
+
+            <hr class="my-4" />
+
+            <h3 class="section-title">Comunicación</h3>
+
+            <div class="mb-3">
+                <label class="form-label">Uso de gestos y comunicación no verbal</label>
+                <select class="form-select" name="Gestos" required>
+                    <option value="">Seleccionar...</option>
+                    <option>Frecuente</option>
+                    <option>Ocasional</option>
+                    <option>Raro</option>
+                    <option>Nunca</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Capacidad de mantener una conversación</label>
+                <select class="form-select" name="Conversacion" required>
+                    <option value="">Seleccionar...</option>
+                    <option>Buena</option>
+                    <option>Regular</option>
+                    <option>Limitada</option>
+                    <option>Muy limitada</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <a asp-controller="especialista" asp-action="evaluar" class="btn btn-outline-secondary me-2">Cancelar</a>
+                <button type="submit" class="btn btn-outline-secondary">Guardar Test</button>
+            </div>
+        </form>
+    </div>
+</div>
