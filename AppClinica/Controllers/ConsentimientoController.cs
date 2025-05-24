@@ -30,7 +30,6 @@ namespace AppClinica.Controllers
 
             if (paciente == null) return NotFound();
 
-            // (Opcional) Desencriptar si el paciente o el especialista tienen datos encriptados
             if (paciente.Especialista != null)
             {
                 paciente.Especialista.Nombres = _aes.Desencriptar(paciente.Especialista.Nombres);
@@ -50,13 +49,17 @@ namespace AppClinica.Controllers
 
             if (usuario == null || usuario.Especialista == null) return NotFound();
 
-            // Desencriptar campos del especialista
-            usuario.Especialista.Nombres = _aes.Desencriptar(usuario.Especialista.Nombres);
-            usuario.Especialista.Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos);
-            usuario.Especialista.Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad);
-            usuario.Especialista.Telefono = _aes.Desencriptar(usuario.Especialista.Telefono);
-            usuario.Especialista.Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? "");
+            var desencriptado = new Especialista
+            {
+                Nombres = _aes.Desencriptar(usuario.Especialista.Nombres),
+                Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos),
+                Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad),
+                Telefono = _aes.Desencriptar(usuario.Especialista.Telefono),
+                Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? ""),
+                JVPP = _aes.Desencriptar(usuario.Especialista.JVPP)
+            };
 
+            ViewBag.EspecialistaDesencriptado = desencriptado;
             return View(usuario);
         }
 
@@ -114,14 +117,18 @@ namespace AppClinica.Controllers
             usuario.IdConsentimiento = consentimiento.IdConsentimiento;
             await _context.SaveChangesAsync();
 
-            // Desencriptar antes de generar el PDF
-            usuario.Especialista.Nombres = _aes.Desencriptar(usuario.Especialista.Nombres);
-            usuario.Especialista.Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos);
-            usuario.Especialista.Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad);
-            usuario.Especialista.Telefono = _aes.Desencriptar(usuario.Especialista.Telefono);
-            usuario.Especialista.Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? "");
+            // Copia desencriptada solo para el PDF
+            var desencriptado = new Especialista
+            {
+                Nombres = _aes.Desencriptar(usuario.Especialista.Nombres),
+                Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos),
+                Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad),
+                Telefono = _aes.Desencriptar(usuario.Especialista.Telefono),
+                Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? ""),
+                JVPP = _aes.Desencriptar(usuario.Especialista.JVPP)
+            };
 
-            string pdfPath = await _pdfService.GenerarActaEspecialistaAsync(usuario, consentimiento);
+            string pdfPath = await _pdfService.GenerarActaEspecialistaAsync(usuario, consentimiento, desencriptado);
             consentimiento.RutaArchivo = pdfPath;
             await _context.SaveChangesAsync();
 

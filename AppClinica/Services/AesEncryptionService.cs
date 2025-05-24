@@ -11,7 +11,7 @@ namespace AppClinica.Services
 
     public class AesEncryptionService : IAesEncryptionService
     {
-        private readonly string _clave = "AES_SUPER_SECRETA_1234"; // Idealmente desde appsettings
+        private readonly string _clave = "AES_SUPER_SECRETA_1234";
 
         public string Encriptar(string textoPlano)
         {

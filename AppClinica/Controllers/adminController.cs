@@ -57,6 +57,7 @@ namespace AppClinica.Controllers
             especialista.Nombres = _aes.Encriptar(especialista.Nombres);
             especialista.Apellidos = _aes.Encriptar(especialista.Apellidos);
             especialista.Especialidad = _aes.Encriptar(especialista.Especialidad);
+            especialista.JVPP = _aes.Encriptar(especialista.JVPP);
             especialista.Telefono = _aes.Encriptar(especialista.Telefono);
             especialista.Direccion = _aes.Encriptar(especialista.Direccion ?? "");
 
