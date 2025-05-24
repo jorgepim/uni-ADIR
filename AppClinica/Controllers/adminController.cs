@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppClinica.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class adminController : Controller
     {
 
@@ -77,10 +80,106 @@ namespace AppClinica.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Gestionar_usuarios()
+        public async Task<IActionResult> Gestionar_usuarios(Usuario id)
         {
-            return View();
+            var usuarios = await _context.Usuarios
+                .Include(u => u.Rol)
+                .Include(u => u.Especialista)
+                .ToListAsync();
+
+            var usuariosSinPacientes = new List<Usuario>();
+
+            foreach (var usuario in usuarios)
+            {
+                if (usuario.RolId == 2) // Especialista
+                {
+                    var especialista = await _context.Especialistas.FirstOrDefaultAsync(e => e.IdUsuario == usuario.IdUsuario);
+                    if (especialista != null)
+                    {
+                        var tienePacientes = await _context.Pacientes.AnyAsync(p => p.IdEspecialista == especialista.IdEspecialista);
+                        if (!tienePacientes)
+                        {
+                            usuariosSinPacientes.Add(usuario);
+                        }
+                    }
+                }
+                else
+                {
+                    usuariosSinPacientes.Add(usuario); // Admin u otro rol
+                }
+            }
+
+            return View(usuariosSinPacientes);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Editar(int id)
+        {
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == id);
+            if (usuario == null)
+                return NotFound();
+
+            var especialista = await _context.Especialistas.FirstOrDefaultAsync(e => e.IdUsuario == id);
+            if (especialista != null)
+            {
+                var tienePacientes = await _context.Pacientes.AnyAsync(p => p.IdEspecialista == especialista.IdEspecialista);
+                if (tienePacientes)
+                {
+                    TempData["Error"] = "No se puede editar un usuario que tiene pacientes asignados.";
+                    return RedirectToAction("Gestionar_usuarios");
+                }
+            }
+
+            var model = new UsuarioEditarViewModel
+            {
+                IdUsuario = usuario.IdUsuario,
+                NombreUsuario = usuario.NombreUsuario,
+                Correo = usuario.Correo
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Editar(UsuarioEditarViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var usuarioExistente = await _context.Usuarios.FindAsync(model.IdUsuario);
+            if (usuarioExistente == null)
+                return NotFound();
+
+            var especialista = await _context.Especialistas.FirstOrDefaultAsync(e => e.IdUsuario == model.IdUsuario);
+            if (especialista != null)
+            {
+                var tienePacientes = await _context.Pacientes.AnyAsync(p => p.IdEspecialista == especialista.IdEspecialista);
+                if (tienePacientes)
+                {
+                    TempData["Error"] = "No se puede editar un usuario que tiene pacientes asignados.";
+                    return RedirectToAction("Gestionar_usuarios");
+                }
+            }
+
+            usuarioExistente.NombreUsuario = model.NombreUsuario;
+            usuarioExistente.Correo = model.Correo;
+
+            if (!string.IsNullOrWhiteSpace(model.Contrasena))
+            {
+                usuarioExistente.Contrasena = BCrypt.Net.BCrypt.HashPassword(model.Contrasena);
+            }
+
+            _context.Update(usuarioExistente);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Usuario actualizado correctamente.";
+            return RedirectToAction("Gestionar_usuarios");
+        }
+
+
 
         [HttpGet]
         public IActionResult Gestionar_resultado()

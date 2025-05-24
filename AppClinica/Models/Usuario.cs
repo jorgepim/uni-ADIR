@@ -13,9 +13,11 @@ namespace AppClinica.Models
         public string? NombreUsuario { get; set; } = string.Empty;
 
         public string? Correo { get; set; } = string.Empty;
-        [Required(ErrorMessage = "La contraseña es obligatoria.")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Debe tener al menos 6 caracteres.")]
-        public string? Contrasena { get; set; } = string.Empty;
+
+        [StringLength(100, MinimumLength = 8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
+        [RegularExpression(@"^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?""{}|<>]).{8,}$",
+      ErrorMessage = "Debe tener al menos una letra, un número y un símbolo.")]
+        public string? Contrasena { get; set; }
 
         public int RolId { get; set; }
 

@@ -8,7 +8,6 @@
 </head>
 <body>
     <header class="bg-dark text-white p-2">
-
         <nav class="navbar navbar-light bg-white shadow-sm px-4">
             <span class="navbar-brand mb-0 h1">Panel de Administración TEA</span>
             <div>
@@ -21,5 +20,8 @@
     <div class="container mt-3">
         @RenderBody()
     </div>
+
+    @* 🚨 Esto permite que los scripts como toggleClave() se ejecuten correctamente *@
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

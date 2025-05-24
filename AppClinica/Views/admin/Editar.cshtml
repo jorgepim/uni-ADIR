@@ -1,0 +1,69 @@
+﻿@model AppClinica.Models.ViewModels.UsuarioEditarViewModel
+
+@{
+    ViewData["Title"] = "Editar Usuario";
+    Layout = null; // Solo si no estás usando Layout
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Editar Usuario</h2>
+
+        <form asp-action="Editar" method="post">
+            <input type="hidden" asp-for="IdUsuario" />
+
+            <div class="mb-3">
+                <label asp-for="NombreUsuario" class="form-label"></label>
+                <input asp-for="NombreUsuario" class="form-control" />
+                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Correo" class="form-label"></label>
+                <input asp-for="Correo" class="form-control" />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="cambiarClaveCheckbox" onchange="toggleClave()">
+                <label class="form-check-label" for="cambiarClaveCheckbox">
+                    ¿Olvidaste la contraseña? Cambiar contraseña
+                </label>
+            </div>
+
+            <div class="mb-3" id="claveContainer" style="display: none;">
+                <label asp-for="Contrasena" class="form-label">Nueva contraseña</label>
+                <input asp-for="Contrasena" class="form-control" type="password" placeholder="Nueva contraseña segura" />
+                <span asp-validation-for="Contrasena" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a asp-action="Gestionar_usuarios" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleClave() {
+            const checkbox = document.getElementById('cambiarClaveCheckbox');
+            const contenedor = document.getElementById('claveContainer');
+            if (checkbox && contenedor) {
+                contenedor.style.display = checkbox.checked ? 'block' : 'none';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            toggleClave();
+        });
+    </script>
+</body>
+</html>
