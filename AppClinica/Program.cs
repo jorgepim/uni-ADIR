@@ -33,6 +33,8 @@ builder.Services.AddAuthentication("Cookies")
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IPdfService, PdfService>();
+builder.Services.AddScoped<IAesEncryptionService, AesEncryptionService>();
+
 
 
 var app = builder.Build();

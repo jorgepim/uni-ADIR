@@ -10,20 +10,33 @@ namespace AppClinica.Controllers
         private readonly AppDbContext _context;
         private readonly IPdfService _pdfService;
         private readonly IEmailService _emailService;
+        private readonly IAesEncryptionService _aes;
 
-        public ConsentimientoController(AppDbContext context, IPdfService pdfService, IEmailService emailService)
+        public ConsentimientoController(AppDbContext context, IPdfService pdfService, IEmailService emailService, IAesEncryptionService aes)
         {
             _context = context;
             _pdfService = pdfService;
             _emailService = emailService;
+            _aes = aes;
         }
 
         // Mostrar vista de acta paciente
         [HttpGet]
         public async Task<IActionResult> ActaPaciente(int id)
         {
-            var paciente = await _context.Pacientes.Include(p => p.Especialista).FirstOrDefaultAsync(p => p.IdPaciente == id);
+            var paciente = await _context.Pacientes
+                .Include(p => p.Especialista)
+                .FirstOrDefaultAsync(p => p.IdPaciente == id);
+
             if (paciente == null) return NotFound();
+
+            // (Opcional) Desencriptar si el paciente o el especialista tienen datos encriptados
+            if (paciente.Especialista != null)
+            {
+                paciente.Especialista.Nombres = _aes.Desencriptar(paciente.Especialista.Nombres);
+                paciente.Especialista.Apellidos = _aes.Desencriptar(paciente.Especialista.Apellidos);
+            }
+
             return View(paciente);
         }
 
@@ -31,8 +44,19 @@ namespace AppClinica.Controllers
         [HttpGet]
         public async Task<IActionResult> ActaEspecialista(int id)
         {
-            var usuario = await _context.Usuarios.Include(u => u.Especialista).FirstOrDefaultAsync(u => u.IdUsuario == id);
-            if (usuario == null) return NotFound();
+            var usuario = await _context.Usuarios
+                .Include(u => u.Especialista)
+                .FirstOrDefaultAsync(u => u.IdUsuario == id);
+
+            if (usuario == null || usuario.Especialista == null) return NotFound();
+
+            // Desencriptar campos del especialista
+            usuario.Especialista.Nombres = _aes.Desencriptar(usuario.Especialista.Nombres);
+            usuario.Especialista.Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos);
+            usuario.Especialista.Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad);
+            usuario.Especialista.Telefono = _aes.Desencriptar(usuario.Especialista.Telefono);
+            usuario.Especialista.Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? "");
+
             return View(usuario);
         }
 
@@ -71,8 +95,11 @@ namespace AppClinica.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmarConsentimientoEspecialista(int idUsuario, string nombreFirmante)
         {
-            var usuario = await _context.Usuarios.FindAsync(idUsuario);
-            if (usuario == null) return NotFound();
+            var usuario = await _context.Usuarios
+                .Include(u => u.Especialista)
+                .FirstOrDefaultAsync(u => u.IdUsuario == idUsuario);
+
+            if (usuario == null || usuario.Especialista == null) return NotFound();
 
             var consentimiento = new Consentimiento
             {
@@ -87,6 +114,13 @@ namespace AppClinica.Controllers
             usuario.IdConsentimiento = consentimiento.IdConsentimiento;
             await _context.SaveChangesAsync();
 
+            // Desencriptar antes de generar el PDF
+            usuario.Especialista.Nombres = _aes.Desencriptar(usuario.Especialista.Nombres);
+            usuario.Especialista.Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos);
+            usuario.Especialista.Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad);
+            usuario.Especialista.Telefono = _aes.Desencriptar(usuario.Especialista.Telefono);
+            usuario.Especialista.Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? "");
+
             string pdfPath = await _pdfService.GenerarActaEspecialistaAsync(usuario, consentimiento);
             consentimiento.RutaArchivo = pdfPath;
             await _context.SaveChangesAsync();
@@ -95,7 +129,7 @@ namespace AppClinica.Controllers
             consentimiento.EnviadoPorCorreo = true;
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Usuario");
+            return RedirectToAction("Index", "admin");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace AppClinica.Models
 {
@@ -12,7 +13,8 @@ namespace AppClinica.Models
         public string? NombreUsuario { get; set; } = string.Empty;
 
         public string? Correo { get; set; } = string.Empty;
-
+        [Required(ErrorMessage = "La contraseña es obligatoria.")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Debe tener al menos 6 caracteres.")]
         public string? Contrasena { get; set; } = string.Empty;
 
         public int RolId { get; set; }

@@ -34,10 +34,11 @@ CREATE TABLE Usuarios (
 CREATE TABLE Especialistas (
     IdEspecialista INT IDENTITY(1,1) PRIMARY KEY,
     IdUsuario INT NOT NULL,
-    Nombres NVARCHAR(100) NOT NULL,
-    Apellidos NVARCHAR(100) NOT NULL,
-    Especialidad NVARCHAR(100) NOT NULL,
-    Telefono NVARCHAR(20) NOT NULL,
+    Nombres NVARCHAR(255) NOT NULL,
+    Apellidos NVARCHAR(255) NOT NULL,
+    JVPP NVARCHAR(255),
+    Especialidad NVARCHAR(255) NOT NULL,
+    Telefono NVARCHAR(255) NOT NULL,
     Direccion NVARCHAR(255),
     FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario)
 );
@@ -45,9 +46,9 @@ CREATE TABLE Especialistas (
 CREATE TABLE Pacientes (
     IdPaciente INT IDENTITY(1,1) PRIMARY KEY,
     IdConsentimiento INT,
-    Correo NVARCHAR(100) NOT NULL UNIQUE,
-    Nombres NVARCHAR(100) NOT NULL,
-    Apellidos NVARCHAR(100) NOT NULL,
+    Correo NVARCHAR(255) NOT NULL UNIQUE,
+    Nombres NVARCHAR(255) NOT NULL,
+    Apellidos NVARCHAR(255) NOT NULL,
     FechaNacimiento DATE NOT NULL,
     Sexo CHAR(1) NOT NULL,
     IdEspecialista INT NOT NULL,

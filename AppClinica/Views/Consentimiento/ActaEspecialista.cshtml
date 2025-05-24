@@ -1,42 +1,46 @@
 ﻿@model AppClinica.Models.Usuario
 @{
     ViewData["Title"] = "Consentimiento del Especialista";
+    var nombreCompleto = $"{Model.Especialista.Nombres} {Model.Especialista.Apellidos}";
 }
 
-<div class="container my-5" style="max-width: 800px; font-family: Arial;">
-    <h2 class="text-center mb-4">Consentimiento Informado - Especialista</h2>
+<div class="container py-5" style="max-width: 800px; font-family: 'Segoe UI', sans-serif;">
+    <div class="card shadow border-0">
+        <div class="card-body">
+            <h2 class="text-center mb-4 text-primary">Consentimiento Informado del Especialista</h2>
 
-    <p>
-        En cumplimiento de la <strong>Ley de Protección de Datos Personales de El Salvador</strong> y la norma internacional <strong>ISO/IEC 27701</strong>, se requiere que usted como profesional autorizado confirme su compromiso con la privacidad, seguridad y uso adecuado de la información clínica a la que tendrá acceso dentro del sistema de diagnóstico TEA.
-    </p>
+            <p>
+                En cumplimiento de la <strong>Ley de Protección de Datos Personales de El Salvador</strong> y la norma <strong>ISO/IEC 27701</strong>, usted confirma su compromiso con la confidencialidad, seguridad y uso ético de los datos clínicos en el sistema TEA.
+            </p>
 
-    <p>
-        Como especialista, usted podrá acceder, registrar y modificar información altamente sensible como datos personales, antecedentes clínicos y resultados de test ADOS-2 / ADI-R de los pacientes asignados. Se compromete a:
-    </p>
+            <p>Como especialista autorizado, usted podrá acceder a información sensible como datos personales y resultados clínicos (ADOS-2 / ADI-R). Se compromete a:</p>
+            <ul>
+                <li>Utilizar esta información únicamente para fines clínicos autorizados.</li>
+                <li>Mantener la confidencialidad de los datos bajo su responsabilidad.</li>
+                <li>Reportar incidentes de seguridad que afecten la integridad de la información.</li>
+            </ul>
 
-    <ul>
-        <li>Usar esta información exclusivamente con fines clínicos.</li>
-        <li>Mantener la confidencialidad de todos los datos.</li>
-        <li>Reportar cualquier incidente de seguridad que comprometa la integridad de los datos.</li>
-    </ul>
+            <p class="mt-3">Este consentimiento permanecerá vigente mientras usted mantenga un rol activo como especialista dentro del sistema.</p>
 
-    <p>Este consentimiento será válido mientras usted se mantenga activo como especialista en el sistema.</p>
+            <form asp-action="ConfirmarConsentimientoEspecialista" method="post">
+                <input type="hidden" name="idUsuario" value="@Model.IdUsuario" />
 
-    <form asp-action="ConfirmarConsentimientoEspecialista" method="post">
-        <input type="hidden" name="idUsuario" value="@Model.IdUsuario" />
+                <div class="form-group mt-4">
+                    <label for="nombreFirmante">Nombre del especialista:</label>
+                    <input type="text" name="nombreFirmante" class="form-control" value="@nombreCompleto" readonly />
+                </div>
 
-        <div class="form-group mt-4">
-            <label for="nombreFirmante">Nombre del especialista:</label>
-            <input type="text" name="nombreFirmante" class="form-control" value="@Model.NombreUsuario" required />
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="consentimientoEsp" required />
+                    <label class="form-check-label" for="consentimientoEsp">
+                        Acepto y me comprometo a cumplir con los principios descritos.
+                    </label>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success mt-4">Aceptar y Generar Acta</button>
+                </div>
+            </form>
         </div>
-
-        <div class="form-check mt-3">
-            <input class="form-check-input" type="checkbox" id="consentimientoEsp" required />
-            <label class="form-check-label" for="consentimientoEsp">
-                Acepto y me comprometo a proteger la privacidad y el uso ético de los datos personales a los que tendré acceso.
-            </label>
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-4">Aceptar y Generar Acta</button>
-    </form>
+    </div>
 </div>
