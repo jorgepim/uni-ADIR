@@ -1,0 +1,27 @@
+﻿@model AppClinica.Models.Paciente
+@{
+    ViewData["Title"] = "Consentimiento del Paciente";
+}
+<div class="container my-5" style="max-width: 800px; font-family: Arial;">
+    <h2 class="text-center mb-4">Consentimiento Informado - Paciente</h2>
+    <p>Yo, <strong>@Model.Nombres @Model.Apellidos</strong>, nacido el @Model.FechaNacimiento.ToShortDateString(), autorizo el tratamiento de mis datos personales con fines clínicos conforme a la Ley de Protección de Datos Personales de El Salvador y la norma ISO/IEC 27701.</p>
+
+    <p>Este consentimiento incluye el uso de instrumentos ADOS-2 y ADI-R, y se me garantiza el acceso, rectificación o eliminación de mis datos en cualquier momento.</p>
+
+    <form asp-action="ConfirmarConsentimientoPaciente" method="post">
+        <input type="hidden" name="idPaciente" value="@Model.IdPaciente" />
+        <div class="form-group mt-4">
+            <label for="nombreFirmante">Nombre del tutor o firmante:</label>
+            <input type="text" name="nombreFirmante" class="form-control" required />
+        </div>
+
+        <div class="form-check mt-3">
+            <input class="form-check-input" type="checkbox" id="consentimiento" required />
+            <label class="form-check-label" for="consentimiento">
+                Acepto voluntariamente el tratamiento de mis datos conforme a lo indicado.
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">Aceptar y Generar Acta</button>
+    </form>
+</div>

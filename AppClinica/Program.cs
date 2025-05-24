@@ -1,4 +1,5 @@
 using AppClinica.Models;
+using AppClinica.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,12 @@ builder.Services.AddAuthentication("Cookies")
         options.AccessDeniedPath = "/Auth/AccesoDenegado";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
+
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IPdfService, PdfService>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

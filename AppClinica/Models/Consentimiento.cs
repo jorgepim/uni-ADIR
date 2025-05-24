@@ -7,7 +7,7 @@ namespace AppClinica.Models
         [Key]
         public int IdConsentimiento { get; set; }
 
-        public string Tipo { get; set; } = "Paciente"; // o "Especialista"
+        public string? Tipo { get; set; }  
 
         public string? NombreFirmante { get; set; }
 
@@ -17,7 +17,6 @@ namespace AppClinica.Models
 
         public bool EnviadoPorCorreo { get; set; }
 
-        // Relaciones opcionales (uno u otro)
         public Usuario? Usuario { get; set; }
         public Paciente? Paciente { get; set; }
     }
