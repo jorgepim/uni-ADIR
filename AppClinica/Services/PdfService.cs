@@ -26,7 +26,16 @@ namespace AppClinica.Services
             gfx.DrawString($"Paciente: {paciente.Nombres} {paciente.Apellidos}", font, XBrushes.Black, 40, 80);
             gfx.DrawString($"Firmante: {consentimiento.NombreFirmante}", font, XBrushes.Black, 40, 100);
             gfx.DrawString($"Fecha: {consentimiento.FechaConsentimiento.ToShortDateString()}", font, XBrushes.Black, 40, 120);
-            gfx.DrawString("Consentimiento otorgado para el tratamiento de datos clínicos bajo normas ISO/IEC 27701 y Ley de Protección de Datos Personales.", font, XBrushes.Black, new XRect(40, 150, page.Width - 80, page.Height - 200));
+            gfx.DrawString("Consentimiento otorgado para el tratamiento de datos clínicos bajo normas ISO/IEC 27701 ",
+                font, XBrushes.Black,
+                new XRect(40, 150, page.Width - 80, 20),
+                XStringFormats.TopLeft);
+
+            gfx.DrawString("y Ley de Protección de Datos Personales.",
+                font, XBrushes.Black,
+                new XRect(40, 170, page.Width - 80, 20),
+                XStringFormats.TopLeft);
+
 
             doc.Save(path);
             doc.Close();

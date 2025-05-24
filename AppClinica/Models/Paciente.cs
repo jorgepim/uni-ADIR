@@ -7,7 +7,7 @@ namespace AppClinica.Models
         [Key]
         public int IdPaciente { get; set; }
 
-        public int IdConsentimiento { get; set; }
+        public int? IdConsentimiento { get; set; }
 
         [Required]
         [EmailAddress]
