@@ -1,0 +1,88 @@
+﻿@model List<AppClinica.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Mis Pacientes";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
+}
+
+<style>
+    .paciente-card {
+        background-color: @grisClaro;
+        border: none;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        padding: 20px 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .paciente-header {
+        color: #1d3557;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .paciente-info {
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .label-info {
+        font-weight: 600;
+        color: #457b9d;
+    }
+
+    .btn-link {
+        color: #457b9d;
+        font-weight: 600;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-controller="Especialista" asp-action="Index" class="btn btn-link">&larr; Volver al Dashboard</a>
+    </div>
+
+    <h1 class="h4 mb-4" style="color:#1d3557;">Mis Pacientes</h1>
+
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var paciente in Model)
+        {
+            <div class="paciente-card">
+                <h5 class="paciente-header">@paciente.Nombres @paciente.Apellidos</h5>
+
+                <div class="paciente-info mb-2">
+                    <span class="label-info">Correo:</span> @paciente.Correo
+                </div>
+
+                <div class="paciente-info mb-2">
+                    <span class="label-info">Fecha de nacimiento:</span> @paciente.FechaNacimiento.ToString("dd/MM/yyyy")
+                </div>
+
+                <div class="paciente-info mb-2">
+                    <span class="label-info">Sexo:</span> @(paciente.Sexo == "M" ? "Masculino" : paciente.Sexo == "F" ? "Femenino" : "Otro")
+                </div>
+
+                <div class="paciente-info mb-2">
+                    <span class="label-info">Agregado el:</span> @paciente.FechaRegistro.ToString("dd/MM/yyyy")
+                </div>
+
+                <div class="paciente-info mb-2">
+                    <span class="label-info">Especialista asignado:</span> @paciente.Especialista?.Nombres @paciente.Especialista?.Apellidos
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No hay pacientes registrados aún.
+        </div>
+    }
+</div>

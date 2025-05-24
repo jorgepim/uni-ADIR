@@ -1,0 +1,96 @@
+﻿@model AppClinica.Models.Paciente
+
+@{
+    ViewData["Title"] = "Mis Pacientes";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
+}
+
+<style>
+    .form-container {
+        background-color: @grisClaro;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        max-width: 600px;
+        margin: auto;
+    }
+
+    h2 {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #1d3557;
+    }
+
+    .btn-outline-secondary {
+        border-color: @celeste;
+        color: #1d3557;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: @celeste;
+            color: #fff;
+        }
+
+    .btn-link {
+        color: #457b9d;
+        font-weight: 600;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-controller="Especialista" asp-action="Index" class="btn btn-link">&larr; Volver al Dashboard</a>
+    </div>
+
+    <div class="form-container">
+        <h2 class="mb-4 text-center">Agregar Paciente</h2>
+
+        <div class="form-group mb-3">
+            <label asp-for="Correo" class="form-label"></label>
+            <input asp-for="Correo" class="form-control" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Nombres" class="form-label"></label>
+            <input asp-for="Nombres" class="form-control" />
+            <span asp-validation-for="Nombres" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Apellidos" class="form-label"></label>
+            <input asp-for="Apellidos" class="form-control" />
+            <span asp-validation-for="Apellidos" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="FechaNacimiento" class="form-label"></label>
+            <input asp-for="FechaNacimiento" type="date" class="form-control" />
+            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-4">
+            <label asp-for="Sexo" class="form-label"></label>
+            <select asp-for="Sexo" class="form-control">
+                <option value="">Seleccione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+            </select>
+            <span asp-validation-for="Sexo" class="text-danger"></span>
+        </div>
+
+        <div class="text-end">
+            <a asp-controller="especialista" asp-action="index" class="btn btn-outline-secondary">Guardar</a>
+        </div>
+    </div>
+</div>

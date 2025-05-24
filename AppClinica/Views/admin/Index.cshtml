@@ -1,57 +1,76 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Panel de Administración";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
 }
 
+<style>
+    .card-panel {
+        background-color: @grisClaro;
+        border: none;
+        border-radius: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-title {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .display-6 {
+        color: #457b9d;
+        font-weight: bold;
+    }
+
+    .card-link {
+        text-decoration: none;
+    }
+</style>
+
 <main class="container my-5">
-    <div class="text-center mb-5">
-        <h2 class="fw-bold text-primary">Panel de Administración</h2>
-        <p class="text-muted">Resumen de gestión del sistema</p>
-    </div>
+    <h2 class="mb-4 text-center" style="color: #1d3557;">Panel de Administración</h2>
 
-    <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-            <a asp-controller="Admin" asp-action="Gestionar_usuarios" class="text-decoration-none">
-                <div class="card border-0 shadow h-100 rounded-4 transition-hover">
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <a asp-controller="Admin" asp-action="Gestionar_usuarios" class="card-link">
+                <div class="card card-panel shadow-sm h-100">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-dark fw-semibold mb-3">Gestionar Usuarios</h5>
-                        <p class="display-5 fw-bold text-primary">@ViewBag.TotalUsuarios</p>
+                        <h5 class="card-title">Gestionar Usuarios</h5>
+                        <p class="display-6">👥👤👥</p>
+                        <p class="display-6">@ViewBag.TotalUsuarios</p>
                     </div>
                 </div>
             </a>
         </div>
 
-        <div class="col-md-4">
-            <a asp-controller="Admin" asp-action="Gestionar_tests" class="text-decoration-none">
-                <div class="card border-0 shadow h-100 rounded-4 transition-hover">
+        <div class="col-md-6 col-lg-4">
+            <a asp-controller="Admin" asp-action="Gestionar_tests" class="card-link">
+                <div class="card card-panel shadow-sm h-100">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-dark fw-semibold mb-3">Gestionar Tests</h5>
-                        <p class="display-5 fw-bold text-success">@ViewBag.TotalTests</p>
+                        <h5 class="card-title">Tests Disponibles</h5>
+                        <p class="display-6">🧠📝📋</p>
+                        <p class="display-6">@ViewBag.TotalTests</p>
                     </div>
                 </div>
             </a>
         </div>
 
-        <div class="col-md-4">
-            <a asp-controller="Admin" asp-action="Gestionar_resultado" class="text-decoration-none">
-                <div class="card border-0 shadow h-100 rounded-4 transition-hover">
+        <div class="col-md-6 col-lg-4">
+            <a asp-controller="Admin" asp-action="Gestionar_resultado" class="card-link">
+                <div class="card card-panel shadow-sm h-100">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-dark fw-semibold mb-3">Revisar Resultados</h5>
-                        <p class="display-5 fw-bold text-warning">@ViewBag.TotalResultados</p>
+                        <h5 class="card-title">Resultados</h5>
+                        <p class="display-6">📊📄📈</p>
+                        <p class="display-6">@ViewBag.TotalResultados</p>
                     </div>
                 </div>
             </a>
         </div>
     </div>
 </main>
-
-<style>
-    .transition-hover {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-        .transition-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-</style>

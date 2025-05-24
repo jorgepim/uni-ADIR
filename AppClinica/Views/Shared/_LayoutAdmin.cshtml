@@ -1,23 +1,62 @@
 ﻿@* Layout exclusivo para Admin *@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - Admin - AppClinica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <style>
+        body {
+            background-color: white;
+        }
+
+        header {
+            background-color: #a8dadc;
+        }
+
+        .navbar-brand {
+            color: #1d3557 !important;
+            font-weight: 700;
+        }
+
+        .navbar {
+            border-radius: 0 0 10px 10px;
+        }
+
+        .btn-primary {
+            background-color: #457b9d;
+            border-color: #457b9d;
+        }
+
+            .btn-primary:hover {
+                background-color: #2f5d75;
+                border-color: #2f5d75;
+            }
+
+        .btn-outline-secondary:hover {
+            background-color: #a8dadc;
+            color: #fff;
+            border-color: #a8dadc;
+        }
+    </style>
 </head>
 <body>
     <header class="bg-dark text-white p-2">
+
         <nav class="navbar navbar-light bg-white shadow-sm px-4">
             <span class="navbar-brand mb-0 h1">Panel de Administración TEA</span>
             <div>
                 <a asp-controller="admin" asp-action="Agregar" class="btn btn-primary me-2">Agregar Especialista</a>
                 <a asp-controller="admin" asp-action="Logout" class="btn btn-outline-secondary">Cerrar Sesión</a>
+
             </div>
         </nav>
     </header>
 
-    <div class="container mt-3">
+    <div class="container mt-4">
         @RenderBody()
     </div>
 

@@ -8,6 +8,7 @@ namespace AppClinica.Models
         public int IdUsuario { get; set; }
         public string Nombres { get; set; } = string.Empty;
         public string Apellidos { get; set; } = string.Empty;
+        public string JVPP { get; set; } = string.Empty;
         public string Especialidad { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
         public string? Direccion { get; set; }

@@ -1,0 +1,81 @@
+﻿@model List<AppClinica.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Evaluar Paciente";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
+}
+
+<style>
+    .card-personalizada {
+        background-color: @grisClaro;
+        border: none;
+        border-radius: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card-personalizada:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+    .btn-link {
+        color: @celeste !important;
+        font-weight: 600;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+    .titulo-pagina {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .card-title {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-controller="Especialista" asp-action="Index" class="btn btn-link">&larr; Volver al Dashboard</a>
+    </div>
+
+    <h1 class="h4 mb-4 titulo-pagina" id="tituloEvaluar">Seleccionar Paciente</h1>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <a asp-controller="especialista" asp-action="test_adir" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title">ADI-R</h5>
+                    <p class="card-text text-muted">Entrevista para el Diagnóstico del Autismo - Revisada</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a asp-controller="especialista" asp-action="test_ados" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title">ADOS-2</h5>
+                    <p class="card-text text-muted">Escala de Observación para el Diagnóstico del Autismo</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function seleccionarPaciente(nombre) {
+        document.getElementById('tituloEvaluar').textContent = 'Seleccionar Test';
+        document.getElementById('pacienteSeleccionado').textContent = nombre;
+        document.getElementById('listaPacientes').classList.add('d-none');
+        document.getElementById('seleccionTest').classList.remove('d-none');
+    }
+</script>

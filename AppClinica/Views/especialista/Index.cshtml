@@ -1,3 +1,75 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml"; // para especialista
+    ViewData["Title"] = "Panel de Especialista";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+    var celeste = "#a8dadc";
+    var grisClaro = "#f1f1f1";
 }
+
+<style>
+    .card-panel {
+        background-color: @grisClaro;
+        border: none;
+        border-radius: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+    .card-title {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .display-6 {
+        color: #457b9d;
+        font-weight: bold;
+    }
+
+    .card-footer a {
+        color: #457b9d;
+        font-weight: 500;
+    }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<main class="container my-5">
+    <h2 class="mb-4 text-center" style="color: #1d3557;">Panel de Especialista</h2>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-6">
+            <div class="card card-panel shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Mis Pacientes</h5>
+                    <p class="display-6">👤👤👤</p>
+                    <p class="display-6">@ViewBag.TotalPacientes</p>
+                </div>
+
+                <div class="card-footer text-center" style="background-color: #a8dadc;">
+                    <a asp-controller="especialista" asp-action="verPacientes" class="text-decoration-none text-dark">Ver todos</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6">
+            <div class="card card-panel shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Evaluaciones Pendientes</h5>
+                    <p class="display-6">📝📝📝</p>
+                    <p class="display-6">@ViewBag.EvaluacionesPendientes</p>
+                </div>
+
+                <div class="card-footer text-center" style="background-color: #a8dadc;">
+                    <a asp-controller="especialista" asp-action="evaluar" class="text-decoration-none text-dark">Iniciar evaluación</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>

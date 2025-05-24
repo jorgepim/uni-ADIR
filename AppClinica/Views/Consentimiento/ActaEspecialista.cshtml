@@ -1,7 +1,7 @@
 ﻿@model AppClinica.Models.Usuario
 @{
     ViewData["Title"] = "Consentimiento del Especialista";
-    var nombreCompleto = $"{Model.Especialista.Nombres} {Model.Especialista.Apellidos}";
+    var nombreCompleto = $"{ViewBag.EspecialistaDesencriptado.Nombres} {ViewBag.EspecialistaDesencriptado.Apellidos}";
 }
 
 <div class="container py-5" style="max-width: 800px; font-family: 'Segoe UI', sans-serif;">
