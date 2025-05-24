@@ -8,5 +8,30 @@ namespace AppClinica.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Agregar()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Gestionar_tests()
+        {
+            return View();
+        }
+         [HttpGet]
+        public IActionResult Gestionar_usuarios()
+        {
+            return View();
+        }  
+        
+        [HttpGet]
+        public IActionResult Gestionar_resultado()
+        {
+            return View();
+        }
+
+       
+
     }
 }

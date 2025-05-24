@@ -8,9 +8,14 @@
 </head>
 <body>
     <header class="bg-dark text-white p-2">
-        <div class="container">
-            <h2>Panel de Administración</h2>
-        </div>
+
+        <nav class="navbar navbar-light bg-white shadow-sm px-4">
+            <span class="navbar-brand mb-0 h1">Panel de Administración TEA</span>
+            <div>
+                <a asp-controller="Admin" asp-action="Agregar" class="btn btn-primary me-2">Agregar Especialista</a>
+                <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-outline-secondary">Cerrar Sesión</a>
+            </div>
+        </nav>
     </header>
     <div class="container mt-3">
         @RenderBody()

@@ -6,6 +6,39 @@
     <head><title>Prestamos</title></head>
     <body>
 
-        <h1>Hola Mundo</h1>
+    <main class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a asp-controller="Admin" asp-action="Gestionar_usuarios" class="text-decoration-none text-dark">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Gestionar Usuarios</h5>
+                            <p class="display-6">@ViewBag.TotalUsuarios</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a asp-controller="Admin" asp-action="Gestionar_tests" class="text-decoration-none text-dark">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Gestionar Tests</h5>
+                            <p class="display-6">@ViewBag.TotalTests</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a asp-controller="Admin" asp-action="Gestionar_resultado" class="text-decoration-none text-dark">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Revisar Resultados</h5>
+                            <p class="display-6">@ViewBag.TotalResultados</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

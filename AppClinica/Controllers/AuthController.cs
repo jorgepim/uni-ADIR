@@ -44,20 +44,12 @@ namespace GAlap1p3.Controllers
                     return View(usuario);
                 }
 
-                // Crear consentimiento automático
-                var consentimiento = new Consentimiento
-                {
-                    Tipo = usuario.RolId == 3 ? "Especialista" : "General",
-                    NombreFirmante = usuario.NombreUsuario,
-                    FechaConsentimiento = DateTime.Now,
-                    RutaArchivo = null,
-                    EnviadoPorCorreo = false
-                };
+               
 
-                _context.Consentimientos.Add(consentimiento);
+               
                 await _context.SaveChangesAsync();
 
-                usuario.IdConsentimiento = consentimiento.IdConsentimiento;
+                usuario.IdConsentimiento =null;
                 usuario.Contrasena = BCrypt.Net.BCrypt.HashPassword(usuario.Contrasena);
                 usuario.FechaCreacion = DateTime.Now;
                 usuario.Estado = true;
