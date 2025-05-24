@@ -2,11 +2,8 @@
 
 @{
     ViewData["Title"] = "Agregar Especialista";
-<<<<<<< HEAD
     Layout = null; // Si quieres que sea modal sin layout principal
-=======
     Layout = null;
->>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
 }
 
 <!DOCTYPE html>
@@ -61,7 +58,6 @@
 </head>
 <body class="bg-light">
     <div class="modal-overlay">
-<<<<<<< HEAD
         <div class="bg-white rounded shadow-lg p-4" style="width: 100%; max-width: 550px;">
             <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
                 <h5 class="mb-0 text-primary">Agregar Nuevo Especialista</h5>
@@ -105,73 +101,44 @@
                         <label asp-for="Especialista.Apellidos" class="form-label">Apellidos</label>
                         <input asp-for="Especialista.Apellidos" class="form-control" required />
                         <span asp-validation-for="Especialista.Apellidos" class="text-danger"></span>
-=======
-        <div class="modal-content-custom">
-            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
-                <h5 class="mb-0 text-primary">Agregar Nuevo Especialista</h5>
-                <a asp-controller="Admin" asp-action="Index" class="btn-close"></a>
-            </div>
+                    </div>
+                    <div class="mb-3">
 
-            <form asp-action="Agregar" method="get">
-                <div class="row mb-3">
-                    <div class="col">
-                        <label asp-for="Nombres" class="form-label">Nombres</label>
-                        <input asp-for="Nombres" class="form-control" type="text" placeholder="Ingrese nombres" required />
-                    </div>
-                    <div class="col">
-                        <label asp-for="Apellidos" class="form-label">Apellidos</label>
-                        <input asp-for="Apellidos" class="form-control" type="text" placeholder="Ingrese apellidos" required />
->>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
-                    </div>
-                </div>
+                        <label asp-for="Especialista.Especialidad" class="form-label">Especialidad</label>
+                        <select asp-for="Especialista.Especialidad" class="form-select" asp-items="@(new SelectList(Model.EspecialidadesDisponibles))" required>
+                            <option value="">Seleccione...</option>
+                        </select>
+                        <span asp-validation-for="Especialista.Especialidad" class="text-danger"></span>
 
-                <div class="mb-3">
-<<<<<<< HEAD
-                    <label asp-for="Especialista.Especialidad" class="form-label">Especialidad</label>
-                    <select asp-for="Especialista.Especialidad" class="form-select" asp-items="@(new SelectList(Model.EspecialidadesDisponibles))" required>
-                        <option value="">Seleccione...</option>
-                    </select>
-                    <span asp-validation-for="Especialista.Especialidad" class="text-danger"></span>
-=======
-                    <label asp-for="Especialidad" class="form-label">Especialidad</label>
-                    <input asp-for="Especialidad" class="form-control" type="text" placeholder="Ej. Psicología infantil" required />
->>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
-                </div>
+                    </div>
 
-                <div class="row mb-3">
-                    <div class="col">
-<<<<<<< HEAD
-                        <label asp-for="Especialista.Telefono" class="form-label">Teléfono</label>
-                        <input asp-for="Especialista.Telefono" class="form-control" required />
-                        <span asp-validation-for="Especialista.Telefono" class="text-danger"></span>
-                    </div>
-                    <div class="col">
-                        <label asp-for="Especialista.Direccion" class="form-label">Dirección</label>
-                        <input asp-for="Especialista.Direccion" class="form-control" required />
-                        <span asp-validation-for="Especialista.Direccion" class="text-danger"></span>
-=======
-                        <label asp-for="Telefono" class="form-label">Teléfono</label>
-                        <input asp-for="Telefono" class="form-control" type="tel" placeholder="Ej. 7777-8888" pattern="[0-9]{4}-?[0-9]{4}" required />
-                    </div>
-                    <div class="col">
-                        <label asp-for="Direccion" class="form-label">Dirección</label>
-                        <input asp-for="Direccion" class="form-control" type="text" placeholder="Dirección completa" required />
->>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
-                    </div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col">
 
-                <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
-                    <button type="submit" class="btn btn-primary">Crear Especialista</button>
+                            <label asp-for="Especialista.Telefono" class="form-label">Teléfono</label>
+                            <input asp-for="Especialista.Telefono" class="form-control" required />
+                            <span asp-validation-for="Especialista.Telefono" class="text-danger"></span>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Especialista.Direccion" class="form-label">Dirección</label>
+                            <input asp-for="Especialista.Direccion" class="form-control" required />
+                            <span asp-validation-for="Especialista.Direccion" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Crear Especialista</button>
+                    </div>
+
                 </div>
             </form>
-        </div>
-    </div>
 
-    @* Validaciones del lado del cliente *@
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+            @* Validaciones del lado del cliente *@
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
 

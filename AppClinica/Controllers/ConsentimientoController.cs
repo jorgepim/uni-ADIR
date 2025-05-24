@@ -129,7 +129,7 @@ namespace AppClinica.Controllers
             consentimiento.EnviadoPorCorreo = true;
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "admin");
         }
     }
 }

@@ -7,26 +7,17 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-<<<<<<< HEAD
     <header class="bg-dark text-white p-2">
 
         <nav class="navbar navbar-light bg-white shadow-sm px-4">
             <span class="navbar-brand mb-0 h1">Panel de Administración TEA</span>
             <div>
                 <a asp-controller="admin" asp-action="Agregar" class="btn btn-primary me-2">Agregar Especialista</a>
-                <a asp-controller="Cuenta" asp-action="Logout" class="btn btn-outline-secondary">Cerrar Sesión</a>
+                <a asp-controller="admin" asp-action="Logout" class="btn btn-outline-secondary">Cerrar Sesión</a>
             </div>
         </nav>
     </header>
-=======
-    <nav class="navbar navbar-light bg-white shadow-sm px-4">
-        <span class="navbar-brand mb-0 h1">Panel de Administración TEA</span>
-        <div>
-            <a asp-controller="Admin" asp-action="Agregar" class="btn btn-primary me-2">Agregar Especialista</a>
-            <a asp-controller="admin" asp-action="Logout" class="btn btn-outline-secondary">Cerrar Sesión</a>
-        </div>
-    </nav>
->>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
+
     <div class="container mt-3">
         @RenderBody()
     </div>
