@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "Gestionar Usuarios";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1050;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .modal-content-custom {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 1rem;
+        padding: 2rem;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    
+
+    .badge-role {
+        text-transform: capitalize;
+        font-size: 0.85rem;
+        padding: 0.4em 0.6em;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-controller="admin" asp-action="Index" class="btn btn-outline-secondary">&larr; Volver al Dashboard</a>
+    </div>
+
+    <h1 class="h4 mb-4">Gestionar Usuarios</h1>
+
+    <div class="table-responsive shadow rounded bg-white">
+        <table class="table table-hover table-bordered align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th class="text-end">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Juan Pérez</td>
+                    <td>juan@example.com</td>
+                    <td><span class="badge bg-success badge-role">Especialista</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-primary me-2" onclick="abrirEditar('Juan Pérez', 'juan@example.com', 'Especialista')">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="abrirEliminar()">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>María García</td>
+                    <td>maria@example.com</td>
+                    <td><span class="badge bg-primary badge-role">Administrador</span></td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-primary me-2" onclick="abrirEditar('María García', 'maria@example.com', 'Administrador')">Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="abrirEliminar()">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Editar Usuario -->
+<div id="modalEditar" class="modal-overlay">
+    <div class="modal-content-custom">
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
+            <h5 class="mb-0"><i class="bi bi-pencil-square me-2"></i>Editar Usuario</h5>
+            <button class="btn-close" onclick="cerrarEditar()"></button>
+        </div>
+        <form onsubmit="cerrarEditar(); return false;">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombreEditar" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailEditar" required>
+            </div>
+            <div class="mb-4">
+                <label class="form-label">Rol</label>
+                <select class="form-select" id="rolEditar">
+                    <option value="Especialista">Especialista</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-outline-secondary" onclick="cerrarEditar()">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Confirmar Eliminación -->
+<div id="modalEliminar" class="modal-overlay">
+    <div class="modal-content-custom text-center">
+        <h5 class="mb-3">¿Está seguro de eliminar este usuario?</h5>
+        <p class="text-muted mb-4">Esta acción no se puede deshacer.</p>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-outline-secondary" onclick="cerrarEliminar()">Cancelar</button>
+            <button class="btn btn-danger" onclick="cerrarEliminar()">Sí, Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<script>
+    function abrirEditar(nombre, email, rol) {
+        document.getElementById('nombreEditar').value = nombre;
+        document.getElementById('emailEditar').value = email;
+        document.getElementById('rolEditar').value = rol;
+        document.getElementById('modalEditar').classList.add('show');
+    }
+    function cerrarEditar() {
+        document.getElementById('modalEditar').classList.remove('show');
+    }
+
+    function abrirEliminar() {
+        document.getElementById('modalEliminar').classList.add('show');
+    }
+    function cerrarEliminar() {
+        document.getElementById('modalEliminar').classList.remove('show');
+    }
+</script>
+

@@ -1,44 +1,57 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; 
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Panel de Administración";
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head><title>Prestamos</title></head>
-    <body>
+<main class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">Panel de Administración</h2>
+        <p class="text-muted">Resumen de gestión del sistema</p>
+    </div>
 
-    <main class="container my-5">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <a asp-controller="Admin" asp-action="Gestionar_usuarios" class="text-decoration-none text-dark">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Gestionar Usuarios</h5>
-                            <p class="display-6">@ViewBag.TotalUsuarios</p>
-                        </div>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <a asp-controller="Admin" asp-action="Gestionar_usuarios" class="text-decoration-none">
+                <div class="card border-0 shadow h-100 rounded-4 transition-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark fw-semibold mb-3">Gestionar Usuarios</h5>
+                        <p class="display-5 fw-bold text-primary">@ViewBag.TotalUsuarios</p>
                     </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a asp-controller="Admin" asp-action="Gestionar_tests" class="text-decoration-none text-dark">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Gestionar Tests</h5>
-                            <p class="display-6">@ViewBag.TotalTests</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a asp-controller="Admin" asp-action="Gestionar_resultado" class="text-decoration-none text-dark">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Revisar Resultados</h5>
-                            <p class="display-6">@ViewBag.TotalResultados</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
-    </main>
-</body>
-</html>
+
+        <div class="col-md-4">
+            <a asp-controller="Admin" asp-action="Gestionar_tests" class="text-decoration-none">
+                <div class="card border-0 shadow h-100 rounded-4 transition-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark fw-semibold mb-3">Gestionar Tests</h5>
+                        <p class="display-5 fw-bold text-success">@ViewBag.TotalTests</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a asp-controller="Admin" asp-action="Gestionar_resultado" class="text-decoration-none">
+                <div class="card border-0 shadow h-100 rounded-4 transition-hover">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark fw-semibold mb-3">Revisar Resultados</h5>
+                        <p class="display-5 fw-bold text-warning">@ViewBag.TotalResultados</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</main>
+
+<style>
+    .transition-hover {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .transition-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+</style>

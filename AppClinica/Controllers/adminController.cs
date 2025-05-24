@@ -1,12 +1,20 @@
 ﻿using AppClinica.Models;
+<<<<<<< HEAD
 using AppClinica.Models.ViewModels;
 using AppClinica.Services;
 using Microsoft.AspNetCore.Mvc;
+=======
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+>>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
 
 namespace AppClinica.Controllers
 {
     public class adminController : Controller
     {
+<<<<<<< HEAD
         private readonly AppDbContext _context;
         private readonly IAesEncryptionService _aes;
 
@@ -61,6 +69,16 @@ namespace AppClinica.Controllers
         }
 
 
+=======
+
+        private readonly AppDbContext _context;
+
+        public adminController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+>>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
         public IActionResult Index()
         {
             return View();
@@ -80,9 +98,25 @@ namespace AppClinica.Controllers
         [HttpGet]
         public IActionResult Gestionar_resultado()
         {
-            return View();
+            var resultados = _context.ResultadosTest
+            .Include(r => r.Paciente)
+            .Include(r => r.Especialista)
+            .Include(r => r.Test)
+            .ToList();
+
+            return View(resultados);
+            
         }
 
+<<<<<<< HEAD
+=======
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
+
+>>>>>>> 4299d51b35f4a1c9c07e2f613ef6907db50dc2c2
 
 
     }
