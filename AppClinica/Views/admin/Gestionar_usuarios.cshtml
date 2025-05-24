@@ -1,9 +1,55 @@
 ﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Gestionar Usuarios";
 }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
 <style>
+    body {
+        background-color: #f1f1f1;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .table thead {
+        background-color: #a8dadc;
+        color: #1d3557;
+    }
+
+    .btn-outline-secondary:hover {
+        background-color: #a8dadc;
+        color: white;
+        border-color: #a8dadc;
+    }
+
+    .btn-outline-primary {
+        border-color: #457b9d;
+        color: #457b9d;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #457b9d;
+            color: white;
+        }
+
+    .btn-outline-danger:hover {
+        background-color: #e63946;
+        color: white;
+        border-color: #e63946;
+    }
+
+    .badge-role {
+        text-transform: capitalize;
+        font-size: 0.85rem;
+        padding: 0.4em 0.6em;
+    }
+
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -15,16 +61,11 @@
         align-items: center;
         justify-content: center;
         z-index: 1050;
-        transition: all 0.3s ease-in-out;
     }
 
         .modal-overlay.show {
             display: flex;
         }
-
-    .table-hover tbody tr:hover {
-        background-color: #f8f9fa;
-    }
 
     .modal-content-custom {
         width: 100%;
@@ -32,16 +73,18 @@
         border-radius: 1rem;
         padding: 2rem;
         background: #fff;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         animation: fadeIn 0.3s ease-in-out;
     }
 
-    
+        .modal-content-custom h5 {
+            color: #457b9d;
+            font-weight: 600;
+        }
 
-    .badge-role {
-        text-transform: capitalize;
-        font-size: 0.85rem;
-        padding: 0.4em 0.6em;
+    .btn-close {
+        background-color: #ccc;
+        border-radius: 50%;
     }
 </style>
 
@@ -54,7 +97,7 @@
 
     <div class="table-responsive shadow rounded bg-white">
         <table class="table table-hover table-bordered align-middle mb-0">
-            <thead class="table-light">
+            <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Email</th>
@@ -90,7 +133,7 @@
 <div id="modalEditar" class="modal-overlay">
     <div class="modal-content-custom">
         <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
-            <h5 class="mb-0"><i class="bi bi-pencil-square me-2"></i>Editar Usuario</h5>
+            <h5><i class="bi bi-pencil-square me-2"></i>Editar Usuario</h5>
             <button class="btn-close" onclick="cerrarEditar()"></button>
         </div>
         <form onsubmit="cerrarEditar(); return false;">
@@ -129,9 +172,6 @@
     </div>
 </div>
 
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
 <script>
     function abrirEditar(nombre, email, rol) {
         document.getElementById('nombreEditar').value = nombre;
@@ -139,6 +179,7 @@
         document.getElementById('rolEditar').value = rol;
         document.getElementById('modalEditar').classList.add('show');
     }
+
     function cerrarEditar() {
         document.getElementById('modalEditar').classList.remove('show');
     }
@@ -146,8 +187,8 @@
     function abrirEliminar() {
         document.getElementById('modalEliminar').classList.add('show');
     }
+
     function cerrarEliminar() {
         document.getElementById('modalEliminar').classList.remove('show');
     }
 </script>
-
