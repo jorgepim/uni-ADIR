@@ -26,12 +26,15 @@ namespace AppClinica.Controllers
         {
             return View();
         }
-
-        [HttpPost]
+       
+        [HttpGet]
         public IActionResult Agregar()
         {
             return View();
-        }       
+        }   
+        
+
+
 
         [HttpGet]
         public IActionResult Evaluar()
