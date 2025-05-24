@@ -44,7 +44,7 @@ CREATE TABLE Especialistas (
 
 CREATE TABLE Pacientes (
     IdPaciente INT IDENTITY(1,1) PRIMARY KEY,
-    IdConsentimiento INT NOT NULL,
+    IdConsentimiento INT,
     Correo NVARCHAR(100) NOT NULL UNIQUE,
     Nombres NVARCHAR(100) NOT NULL,
     Apellidos NVARCHAR(100) NOT NULL,
