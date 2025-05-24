@@ -1,4 +1,6 @@
-﻿namespace AppClinica.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
+namespace AppClinica.Models
 {
     public class Especialista
     {
@@ -10,8 +12,11 @@
         public string Telefono { get; set; } = string.Empty;
         public string? Direccion { get; set; }
 
-        public Usuario Usuario { get; set; }
-        public ICollection<Paciente> Pacientes { get; set; }
-        public ICollection<ResultadoTest> ResultadosTest { get; set; }
+        [ValidateNever]
+        public Usuario? Usuario { get; set; }
+        [ValidateNever]
+        public ICollection<Paciente>? Pacientes { get; set; }
+        [ValidateNever]
+        public ICollection<ResultadoTest>? ResultadosTest { get; set; }
     }
 }

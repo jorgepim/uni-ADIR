@@ -110,7 +110,7 @@ namespace GAlap1p3.Controllers
 
             if (usuario.RolId == 1)
                 return RedirectToAction("Index", "Admin");
-            else if (usuario.RolId == 3)
+            else if (usuario.RolId == 2)
                 return RedirectToAction("Index", "Especialista");
 
             return RedirectToAction("Login"); // fallback
