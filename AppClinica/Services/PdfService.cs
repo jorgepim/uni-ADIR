@@ -7,7 +7,7 @@ namespace AppClinica.Services
     public interface IPdfService
     {
         Task<string> GenerarActaPacienteAsync(Paciente paciente, Consentimiento consentimiento);
-        Task<string> GenerarActaEspecialistaAsync(Usuario usuario, Consentimiento consentimiento);
+        Task<string> GenerarActaEspecialistaAsync(Usuario usuario, Consentimiento consentimiento, Especialista desencriptado);
     }
 
     public class PdfService : IPdfService
@@ -26,7 +26,7 @@ namespace AppClinica.Services
             gfx.DrawString($"Paciente: {paciente.Nombres} {paciente.Apellidos}", font, XBrushes.Black, 40, 80);
             gfx.DrawString($"Firmante: {consentimiento.NombreFirmante}", font, XBrushes.Black, 40, 100);
             gfx.DrawString($"Fecha: {consentimiento.FechaConsentimiento.ToShortDateString()}", font, XBrushes.Black, 40, 120);
-            gfx.DrawString("Consentimiento otorgado para el tratamiento de datos clínicos bajo normas ISO/IEC 27701 ",
+            gfx.DrawString("Consentimiento otorgado para el tratamiento de datos clínicos bajo normas ISO/IEC 27701",
                 font, XBrushes.Black,
                 new XRect(40, 150, page.Width - 80, 20),
                 XStringFormats.TopLeft);
@@ -36,14 +36,13 @@ namespace AppClinica.Services
                 new XRect(40, 170, page.Width - 80, 20),
                 XStringFormats.TopLeft);
 
-
             doc.Save(path);
             doc.Close();
 
             return path;
         }
 
-        public async Task<string> GenerarActaEspecialistaAsync(Usuario usuario, Consentimiento consentimiento)
+        public async Task<string> GenerarActaEspecialistaAsync(Usuario usuario, Consentimiento consentimiento, Especialista desencriptado)
         {
             string path = Path.Combine("App_Data/Consentimientos", $"Especialista_{usuario.IdUsuario}_Acta.pdf");
 
@@ -56,15 +55,16 @@ namespace AppClinica.Services
             gfx.DrawString("Acta de Consentimiento del Especialista", font, XBrushes.Black,
                 new XRect(0, 20, page.Width, 30), XStringFormats.TopCenter);
 
-            gfx.DrawString($"Especialista: {usuario.NombreUsuario}", font, XBrushes.Black, 40, 80);
-            gfx.DrawString($"Firmante: {consentimiento.NombreFirmante}", font, XBrushes.Black, 40, 100);
-            gfx.DrawString($"Fecha: {consentimiento.FechaConsentimiento.ToShortDateString()}", font, XBrushes.Black, 40, 120);
+            gfx.DrawString($"Especialista: {desencriptado.Nombres} {desencriptado.Apellidos}", font, XBrushes.Black, 40, 80);
+            gfx.DrawString($"JVPP: {desencriptado.JVPP}", font, XBrushes.Black, 40, 100);
+            gfx.DrawString($"Firmante: {consentimiento.NombreFirmante}", font, XBrushes.Black, 40, 120);
+            gfx.DrawString($"Fecha: {consentimiento.FechaConsentimiento.ToShortDateString()}", font, XBrushes.Black, 40, 140);
 
             gfx.DrawString(
                 "El especialista acepta proteger la confidencialidad de los datos clínicos a los que tendrá acceso.",
                 font,
                 XBrushes.Black,
-                new XRect(40, 150, page.Width - 80, 100),
+                new XRect(40, 170, page.Width - 80, 100),
                 XStringFormats.TopLeft);
 
             doc.Save(path);
@@ -72,6 +72,5 @@ namespace AppClinica.Services
 
             return path;
         }
-
     }
 }

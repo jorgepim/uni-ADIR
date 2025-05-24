@@ -25,7 +25,7 @@ namespace AppClinica.Controllers
         }
 
         [HttpPost]
-        public IActionResult Addpaciente()
+        public IActionResult Agregar()
         {
             return View();
         }       

@@ -123,15 +123,21 @@
                         <input asp-for="Especialista.Apellidos" class="form-control" required />
                         <span asp-validation-for="Especialista.Apellidos" class="text-danger"></span>
                     </div>
-                </div>
+                    <div class="mb-3">
 
-                <div class="mb-3">
-                    <label asp-for="Especialista.Especialidad" class="form-label">Especialidad</label>
-                    <select asp-for="Especialista.Especialidad" class="form-select" asp-items="@(new SelectList(Model.EspecialidadesDisponibles))" required>
-                        <option value="">Seleccione...</option>
-                    </select>
-                    <span asp-validation-for="Especialista.Especialidad" class="text-danger"></span>
-                </div>
+                        <label asp-for="Especialista.Especialidad" class="form-label">Especialidad</label>
+                        <select asp-for="Especialista.Especialidad" class="form-select" asp-items="@(new SelectList(Model.EspecialidadesDisponibles))" required>
+                            <option value="">Seleccione...</option>
+                        </select>
+                        <span asp-validation-for="Especialista.Especialidad" class="text-danger"></span>
+
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Especialista.JVPP" class="form-label">Número JVPP</label>
+                        <input asp-for="Especialista.JVPP" class="form-control" required />
+                        <span asp-validation-for="Especialista.JVPP" class="text-danger"></span>
+                    </div>
+
 
                 <div class="row mb-3">
                     <div class="col">
