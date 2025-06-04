@@ -109,7 +109,7 @@ namespace GAlap1p3.Controllers
                 new ClaimsPrincipal(claimsIdentity), authProperties);
 
             if (usuario.RolId == 1)
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index", "admin");
             else if (usuario.RolId == 2)
                 return RedirectToAction("Index", "Especialista");
 

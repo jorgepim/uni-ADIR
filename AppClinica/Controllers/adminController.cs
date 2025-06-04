@@ -69,7 +69,7 @@ namespace AppClinica.Controllers
 
             return RedirectToAction("ActaEspecialista", "Consentimiento", new { id = usuario.IdUsuario });
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
