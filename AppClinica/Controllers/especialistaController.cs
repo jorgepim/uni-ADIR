@@ -31,8 +31,39 @@ namespace AppClinica.Controllers
         public IActionResult Agregar()
         {
             return View();
-        }   
-        
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Agregar(Paciente paciente)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(paciente);
+            }
+
+            // Obtener el ID del especialista actual (desde el claim del usuario logueado)
+            var correoUsuario = User.Identity?.Name;
+            var especialista = await _context.Especialistas
+                .Include(e => e.Usuario)
+                .FirstOrDefaultAsync(e => e.Usuario.Correo == correoUsuario);
+
+            if (especialista == null)
+            {
+                TempData["Error"] = "No se pudo determinar el especialista actual.";
+                return RedirectToAction("Index");
+            }
+
+            paciente.IdEspecialista = especialista.IdEspecialista;
+            paciente.FechaRegistro = DateTime.Now;
+
+            _context.Pacientes.Add(paciente);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Paciente agregado correctamente.";
+            return RedirectToAction("verPacientes");
+        }
+
 
 
 

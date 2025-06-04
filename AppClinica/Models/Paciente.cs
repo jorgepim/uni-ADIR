@@ -29,6 +29,13 @@ namespace AppClinica.Models
         [MaxLength(1)]
         public string Sexo { get; set; } = string.Empty;
 
+        [Required]
+        public string? Responsable { get; set; } = string.Empty;
+
+        [Required]
+        public string? Direccion { get; set; } = string.Empty;  
+
+
         public int IdEspecialista { get; set; }
 
         public DateTime FechaRegistro { get; set; }
