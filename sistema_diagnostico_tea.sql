@@ -51,10 +51,13 @@ CREATE TABLE Pacientes (
     Apellidos NVARCHAR(255) NOT NULL,
     FechaNacimiento DATE NOT NULL,
     Sexo CHAR(1) NOT NULL,
-    Responsable NVARCHAR(255) NOT NULL DEFAULT '',
+    Responsable NVARCHAR(255),
+    Telefono NVARCHAR(255) NOT NULL DEFAULT '',
+    ParentescoResponsable NVARCHAR(255),
     Direccion NVARCHAR(255) NOT NULL DEFAULT '',
     IdEspecialista INT NOT NULL,
     FechaRegistro DATE NOT NULL,
+
     FOREIGN KEY (IdEspecialista) REFERENCES Especialistas(IdEspecialista),
     FOREIGN KEY (IdConsentimiento) REFERENCES Consentimientos(IdConsentimiento)
 );
@@ -84,14 +87,6 @@ CREATE TABLE Preguntas (
     FOREIGN KEY (IdSeccion) REFERENCES SeccionesTest(IdSeccion)
 );
 
-CREATE TABLE RespuestasOpcion (
-    IdRespuesta INT IDENTITY(1,1) PRIMARY KEY,
-    IdPregunta INT NOT NULL,
-    TextoRespuesta NVARCHAR(255) NOT NULL,
-    Valor INT,
-    FOREIGN KEY (IdPregunta) REFERENCES Preguntas(IdPregunta)
-);
-
 CREATE TABLE ResultadosTest (
     IdResultado INT IDENTITY(1,1) PRIMARY KEY,
     IdTest INT NOT NULL,
@@ -108,9 +103,19 @@ CREATE TABLE RespuestasPaciente (
     IdRespuestaPaciente INT IDENTITY(1,1) PRIMARY KEY,
     IdResultado INT NOT NULL,
     IdPregunta INT NOT NULL,
-    RespuestaTexto NVARCHAR(MAX),
-    IdRespuestaOpcion INT,
+    Puntuacion INT NOT NULL,
+    Comentario NVARCHAR(MAX),
     FOREIGN KEY (IdResultado) REFERENCES ResultadosTest(IdResultado),
-    FOREIGN KEY (IdPregunta) REFERENCES Preguntas(IdPregunta),
-    FOREIGN KEY (IdRespuestaOpcion) REFERENCES RespuestasOpcion(IdRespuesta)
+    FOREIGN KEY (IdPregunta) REFERENCES Preguntas(IdPregunta)
 );
+
+CREATE TABLE ComentariosSeccionResultado (
+    IdComentarioSeccion INT IDENTITY(1,1) PRIMARY KEY,
+    IdResultado INT NOT NULL,
+    IdSeccion INT NOT NULL,
+    Comentario NVARCHAR(MAX) NOT NULL,
+    FechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
+    FOREIGN KEY (IdResultado) REFERENCES ResultadosTest(IdResultado),
+    FOREIGN KEY (IdSeccion) REFERENCES SeccionesTest(IdSeccion)
+);
+

@@ -4,13 +4,21 @@
     ViewData["Title"] = "Agregar Paciente";
     Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
 }
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 <div class="mb-3">
-    <a asp-controller="Especialista" asp-action="Index" class="btn btn-link text-decoration-none">&larr; Volver al Dashboard</a>
+    <a asp-controller="especialista" asp-action="Index" class="btn btn-link text-decoration-none">&larr; Volver al Dashboard</a>
 </div>
 
-<form asp-action="Agregar" method="post" class="row g-4">
+<form asp-controller="especialista" asp-action="Agregar" method="post" class="row g-4" novalidate>
     @Html.AntiForgeryToken()
+
     <div class="col-12 col-md-6">
         <label asp-for="Correo" class="form-label fw-semibold text-gradient">Correo Electrónico</label>
         <input asp-for="Correo" class="form-control" />
@@ -46,9 +54,21 @@
     </div>
 
     <div class="col-12 col-md-6">
-        <label asp-for="Responsable" class="form-label fw-semibold text-gradient">Responsable</label>
+        <label asp-for="Telefono" class="form-label fw-semibold text-gradient">Teléfono</label>
+        <input asp-for="Telefono" class="form-control" id="telefonoInput" maxlength="9" placeholder="0000-0000" />
+        <span asp-validation-for="Telefono" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Responsable" class="form-label fw-semibold text-gradient">Nombre del Responsable</label>
         <input asp-for="Responsable" class="form-control" />
         <span asp-validation-for="Responsable" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="ParentescoResponsable" class="form-label fw-semibold text-gradient">Parentesco del Responsable</label>
+        <input asp-for="ParentescoResponsable" class="form-control" />
+        <span asp-validation-for="ParentescoResponsable" class="text-danger small"></span>
     </div>
 
     <div class="col-12">
@@ -63,6 +83,14 @@
         </button>
     </div>
 </form>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#telefonoInput').mask('0000-0000');
+        });
+    </script>
 }
