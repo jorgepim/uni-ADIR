@@ -27,7 +27,11 @@ namespace AppClinica.Models
 
         public Rol? Rol { get; set; }
 
-        public Consentimiento? Consentimiento { get; set; }
+        public String? TokenRecuperacion { get; set; }
+
+        //public DateTime? TokenFechaExpiracion { get; set; }
+
+    public Consentimiento? Consentimiento { get; set; }
 
         public Especialista? Especialista { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿@model AppClinica.Models.Paciente
+﻿@* @model AppClinica.Models.Paciente
 @{
     ViewData["Title"] = "Consentimiento del Paciente";
 }
@@ -23,5 +23,74 @@
         </div>
 
         <button type="submit" class="btn btn-success mt-4">Aceptar y Generar Acta</button>
+    </form>
+</div>
+ *@
+
+
+@model AppClinica.Models.Paciente
+@{
+    ViewData["Title"] = "Consentimientos del Paciente";
+}
+<div class="container my-5" style="max-width: 900px; font-family: 'Segoe UI', sans-serif;">
+    <h2 class="text-center mb-4">Acta de Consentimientos Informados</h2>
+
+    <div class="mb-4 p-3 bg-light border rounded">
+        <h5>Datos del Paciente</h5>
+        <p><strong>Nombre:</strong> @Model.Nombres @Model.Apellidos</p>
+        <p><strong>Fecha de Nacimiento:</strong> @Model.FechaNacimiento.ToShortDateString()</p>
+        <p><strong>Sexo:</strong> @(Model.Sexo == "M" ? "Masculino" : "Femenino")</p>
+        <p><strong>Responsable Legal:</strong> @Model.Responsable</p>
+        <p><strong>Correo de contacto:</strong> @Model.Correo</p>
+    </div>
+
+    <form asp-action="ConfirmarConsentimientoPaciente" method="post">
+        <input type="hidden" name="idPaciente" value="@Model.IdPaciente" />
+
+        <!-- Consentimiento 1 -->
+        <div class="mb-4">
+            <h5>1. Consentimiento para la Evaluación (ADOS-2 y ADI-R)</h5>
+            <p>
+                Autorizo al profesional de la salud a realizar evaluaciones diagnósticas con las herramientas ADOS-2 y ADI-R. Se me ha explicado que estas pruebas forman parte del proceso de evaluación para el diagnóstico de TEA y que su aplicación no genera daño físico ni psicológico.
+            </p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="consentEvaluacion" required />
+                <label class="form-check-label">Acepto este consentimiento</label>
+            </div>
+        </div>
+
+        <!-- Consentimiento 2 -->
+        <div class="mb-4">
+            <h5>2. Consentimiento para el Tratamiento de Datos Personales</h5>
+            <p>
+                Acepto que los datos personales y clínicos recopilados durante el proceso de evaluación puedan ser tratados, almacenados y protegidos conforme a la Ley de Protección de Datos Personales de El Salvador y la norma ISO/IEC 27701. Tengo derecho a solicitar el acceso, corrección o eliminación de mis datos en cualquier momento.
+            </p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="consentDatos" required />
+                <label class="form-check-label">Acepto este consentimiento</label>
+            </div>
+        </div>
+
+        <!-- Consentimiento 3 -->
+        <div class="mb-4">
+            <h5>3. Consentimiento para Grabaciones (opcional)</h5>
+            <p>
+                En caso de requerirse, autorizo la grabación (video/audio) de las sesiones de evaluación para fines de revisión clínica, supervisión o formación interna. Estas grabaciones serán tratadas como confidenciales y no se difundirán públicamente sin autorización explícita adicional.
+            </p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="consentGrabacion" />
+                <label class="form-check-label">Acepto este consentimiento</label>
+            </div>
+        </div>
+
+        <!-- Firmante -->
+        <div class="form-group mt-4">
+            <label for="nombreFirmante"><strong>Nombre del Tutor o Responsable Legal:</strong></label>
+            <input type="text" name="nombreFirmante" class="form-control" required />
+        </div>
+
+        <div class="text-center mt-5">
+            <button type="submit" class="btn btn-success btn-lg">Aceptar y Generar Acta</button>
+        </div>
     </form>
 </div>
