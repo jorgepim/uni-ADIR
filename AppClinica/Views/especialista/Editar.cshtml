@@ -1,0 +1,84 @@
+﻿@model AppClinica.Models.Paciente
+@{
+    ViewData["Title"] = "Editar Paciente";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+}
+
+<div class="mb-3">
+    <a asp-action="verPacientes" class="btn btn-link">&larr; Volver al listado</a>
+</div>
+
+<h2 class="text-gradient">Editar Paciente</h2>
+
+<form asp-action="Editar" method="post" class="row g-4">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="IdPaciente" />
+
+    <div class="col-md-6">
+        <label asp-for="Correo" class="form-label">Correo Electrónico</label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Nombres" class="form-label">Nombres</label>
+        <input asp-for="Nombres" class="form-control" />
+        <span asp-validation-for="Nombres" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Apellidos" class="form-label">Apellidos</label>
+        <input asp-for="Apellidos" class="form-control" />
+        <span asp-validation-for="Apellidos" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="FechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+        <span asp-validation-for="FechaNacimiento" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Sexo" class="form-label">Sexo</label>
+        <select asp-for="Sexo" class="form-select">
+            <option value="">Seleccione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+        </select>
+        <span asp-validation-for="Sexo" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Telefono" class="form-label">Teléfono</label>
+        <input asp-for="Telefono" class="form-control" placeholder="0000-0000" />
+        <span asp-validation-for="Telefono" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Responsable" class="form-label">Responsable</label>
+        <input asp-for="Responsable" class="form-control" />
+        <span asp-validation-for="Responsable" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="ParentescoResponsable" class="form-label">Parentesco</label>
+        <input asp-for="ParentescoResponsable" class="form-control" />
+        <span asp-validation-for="ParentescoResponsable" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Direccion" class="form-label">Dirección</label>
+        <textarea asp-for="Direccion" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Direccion" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 text-end">
+        <button type="submit" class="btn btn-modern btn-primary-modern">
+            <i class="fas fa-save me-2"></i>Guardar Cambios
+        </button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

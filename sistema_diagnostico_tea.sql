@@ -51,10 +51,13 @@ CREATE TABLE Pacientes (
     Apellidos NVARCHAR(255) NOT NULL,
     FechaNacimiento DATE NOT NULL,
     Sexo CHAR(1) NOT NULL,
-    Responsable NVARCHAR(255) NOT NULL DEFAULT '',
+    Responsable NVARCHAR(255),
+    Telefono NVARCHAR(255) NOT NULL DEFAULT '',
+    ParentescoResponsable NVARCHAR(255),
     Direccion NVARCHAR(255) NOT NULL DEFAULT '',
     IdEspecialista INT NOT NULL,
     FechaRegistro DATE NOT NULL,
+
     FOREIGN KEY (IdEspecialista) REFERENCES Especialistas(IdEspecialista),
     FOREIGN KEY (IdConsentimiento) REFERENCES Consentimientos(IdConsentimiento)
 );
