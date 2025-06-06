@@ -116,6 +116,12 @@ namespace AppClinica.Controllers
             return View(); // 👈 Esto llena el @model con la lista
         }
 
+        [HttpGet]
+        public IActionResult TestAdos(int idPaciente)
+        {
+            return View(idPaciente); // 👈 Esto llena el @model con la lista
+        }
+
 
         public async Task<IActionResult> Logout()
         {
@@ -243,6 +249,11 @@ namespace AppClinica.Controllers
             TempData["Success"] = "Datos del paciente actualizados correctamente.";
             return RedirectToAction("verPacientes");
         }
+
+        //public IActionResult IniciarModuloAdos(int modulo, int idPaciente)
+        //{
+        //    // lógica para redirigir al módulo correspondiente
+        //}
 
     }
 }
