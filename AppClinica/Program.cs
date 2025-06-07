@@ -51,6 +51,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication(); // ?Faltante
 
 app.UseAuthorization();
 

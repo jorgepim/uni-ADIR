@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace AppClinica.Controllers
 {
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Administrador")]
     public class adminController : Controller
     {
 
@@ -35,6 +35,18 @@ namespace AppClinica.Controllers
         [HttpPost]
         public async Task<IActionResult> Agregar(EspecialistaViewModel model)
         {
+            // Validar si el correo ya existe
+            bool correoExiste = await _context.Usuarios.AnyAsync(u => u.Correo == model.Usuario.Correo);
+            if (correoExiste)
+            {
+                ModelState.AddModelError("Usuario.Correo", "El correo ya está registrado.");
+                model.EspecialidadesDisponibles = new List<string>
+    {
+        "Psicología Clínica", "Neuropsicología", "Pediatría", "Psiquiatría", "Terapia Ocupacional"
+    };
+                return View(model);
+            }
+
             if (!ModelState.IsValid)
             {
                 model.EspecialidadesDisponibles = new List<string>
@@ -69,7 +81,7 @@ namespace AppClinica.Controllers
 
             return RedirectToAction("ActaEspecialista", "Consentimiento", new { id = usuario.IdUsuario });
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

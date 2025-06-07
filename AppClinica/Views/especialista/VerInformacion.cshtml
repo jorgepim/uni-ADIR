@@ -1,0 +1,73 @@
+﻿@model AppClinica.Models.Paciente
+
+@{
+    ViewData["Title"] = "Información del Paciente";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+}
+
+<div class="mb-4">
+    <a asp-action="verPacientes" asp-controller="Especialista" class="btn btn-link">&larr; Volver a la lista</a>
+</div>
+
+<div class="card shadow-sm mb-4 p-4 rounded-4 border-0 bg-white fade-in-up">
+    <h2 class="text-gradient mb-3">Datos del Paciente</h2>
+
+    <dl class="row">
+        <dt class="col-sm-4">Nombres</dt>
+        <dd class="col-sm-8">@Model.Nombres</dd>
+
+        <dt class="col-sm-4">Apellidos</dt>
+        <dd class="col-sm-8">@Model.Apellidos</dd>
+
+        <dt class="col-sm-4">Correo Electrónico</dt>
+        <dd class="col-sm-8">@Model.Correo</dd>
+
+        <dt class="col-sm-4">Fecha de Nacimiento</dt>
+        <dd class="col-sm-8">@Model.FechaNacimiento.ToString("dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-4">Sexo</dt>
+        <dd class="col-sm-8">@((Model.Sexo == "M") ? "Masculino" : "Femenino")</dd>
+
+        <dt class="col-sm-4">Teléfono</dt>
+        <dd class="col-sm-8">@Model.Telefono</dd>
+
+        @if (!string.IsNullOrEmpty(Model.Responsable))
+        {
+            <dt class="col-sm-4">Responsable</dt>
+            <dd class="col-sm-8">@Model.Responsable</dd>
+
+            <dt class="col-sm-4">Parentesco</dt>
+            <dd class="col-sm-8">@Model.ParentescoResponsable</dd>
+        }
+
+        <dt class="col-sm-4">Dirección</dt>
+        <dd class="col-sm-8">@Model.Direccion</dd>
+
+        <dt class="col-sm-4">Registrado el</dt>
+        <dd class="col-sm-8">@Model.FechaRegistro.ToString("dd/MM/yyyy")</dd>
+    </dl>
+</div>
+
+<div class="card shadow-sm p-4 rounded-4 border-0 bg-white fade-in-up">
+    <h3 class="text-gradient mb-3">Historial de Evaluaciones</h3>
+
+    @if (Model.ResultadosTest != null && Model.ResultadosTest.Any())
+    {
+        <ul class="list-group list-group-flush">
+            @foreach (var resultado in Model.ResultadosTest)
+            {
+                <li class="list-group-item">
+                    <strong>Test:</strong> @resultado.Test.NombreTest <br />
+                    <strong>Fecha:</strong> @resultado.FechaRealizacion.ToString("dd/MM/yyyy") <br />
+                    <strong>Observaciones:</strong> @resultado.Observaciones
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Este paciente aún no tiene resultados registrados.
+        </div>
+    }
+</div>

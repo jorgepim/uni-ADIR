@@ -15,6 +15,8 @@ namespace AppClinica.Services
 
         public string Encriptar(string textoPlano)
         {
+            if (string.IsNullOrWhiteSpace(textoPlano))
+                return string.Empty;
             using var aes = Aes.Create();
             aes.Key = Encoding.UTF8.GetBytes(_clave.PadRight(32).Substring(0, 32));
             aes.IV = Encoding.UTF8.GetBytes(_clave.PadRight(16).Substring(0, 16));
@@ -28,15 +30,26 @@ namespace AppClinica.Services
 
         public string Desencriptar(string textoCifrado)
         {
-            using var aes = Aes.Create();
-            aes.Key = Encoding.UTF8.GetBytes(_clave.PadRight(32).Substring(0, 32));
-            aes.IV = Encoding.UTF8.GetBytes(_clave.PadRight(16).Substring(0, 16));
+            if (string.IsNullOrWhiteSpace(textoCifrado))
+                return string.Empty;
 
-            var decryptor = aes.CreateDecryptor();
-            var input = Convert.FromBase64String(textoCifrado);
-            var resultado = decryptor.TransformFinalBlock(input, 0, input.Length);
+            try
+            {
+                using var aes = Aes.Create();
+                aes.Key = Encoding.UTF8.GetBytes(_clave.PadRight(32).Substring(0, 32));
+                aes.IV = Encoding.UTF8.GetBytes(_clave.PadRight(16).Substring(0, 16));
 
-            return Encoding.UTF8.GetString(resultado);
+                var decryptor = aes.CreateDecryptor();
+                var input = Convert.FromBase64String(textoCifrado);
+                var resultado = decryptor.TransformFinalBlock(input, 0, input.Length);
+
+                return Encoding.UTF8.GetString(resultado);
+            }
+            catch
+            {
+                return textoCifrado; // Retorna el texto original si no se puede desencriptar
+            }
         }
+
     }
 }

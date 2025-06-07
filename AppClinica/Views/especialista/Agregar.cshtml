@@ -1,96 +1,96 @@
 ﻿@model AppClinica.Models.Paciente
 
 @{
-    ViewData["Title"] = "Mis Pacientes";
+    ViewData["Title"] = "Agregar Paciente";
     Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
-    var celeste = "#a8dadc";
-    var grisClaro = "#f1f1f1";
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
-<style>
-    .form-container {
-        background-color: @grisClaro;
-        border-radius: 20px;
-        padding: 40px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-        max-width: 600px;
-        margin: auto;
-    }
-
-    h2 {
-        color: #1d3557;
-        font-weight: 600;
-    }
-
-    .form-label {
-        font-weight: 600;
-        color: #1d3557;
-    }
-
-    .btn-outline-secondary {
-        border-color: @celeste;
-        color: #1d3557;
-    }
-
-        .btn-outline-secondary:hover {
-            background-color: @celeste;
-            color: #fff;
-        }
-
-    .btn-link {
-        color: #457b9d;
-        font-weight: 600;
-    }
-
-        .btn-link:hover {
-            text-decoration: underline;
-        }
-</style>
-
-<div class="container py-5">
-    <div class="mb-4">
-        <a asp-controller="Especialista" asp-action="Index" class="btn btn-link">&larr; Volver al Dashboard</a>
-    </div>
-
-    <div class="form-container">
-        <h2 class="mb-4 text-center">Agregar Paciente</h2>
-
-        <div class="form-group mb-3">
-            <label asp-for="Correo" class="form-label"></label>
-            <input asp-for="Correo" class="form-control" />
-            <span asp-validation-for="Correo" class="text-danger"></span>
-        </div>
-
-        <div class="form-group mb-3">
-            <label asp-for="Nombres" class="form-label"></label>
-            <input asp-for="Nombres" class="form-control" />
-            <span asp-validation-for="Nombres" class="text-danger"></span>
-        </div>
-
-        <div class="form-group mb-3">
-            <label asp-for="Apellidos" class="form-label"></label>
-            <input asp-for="Apellidos" class="form-control" />
-            <span asp-validation-for="Apellidos" class="text-danger"></span>
-        </div>
-
-        <div class="form-group mb-3">
-            <label asp-for="FechaNacimiento" class="form-label"></label>
-            <input asp-for="FechaNacimiento" type="date" class="form-control" />
-            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
-        </div>
-
-        <div class="form-group mb-4">
-            <label asp-for="Sexo" class="form-label"></label>
-            <select asp-for="Sexo" class="form-control">
-                <option value="">Seleccione</option>
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
-            </select>
-            <span asp-validation-for="Sexo" class="text-danger"></span>
-        </div>
-
-        <div class="text-end">
-            <a asp-controller="especialista" asp-action="index" class="btn btn-outline-secondary">Guardar</a>
-        </div>
-    </div>
+<div class="mb-3">
+    <a asp-controller="especialista" asp-action="Index" class="btn btn-link text-decoration-none">&larr; Volver al Dashboard</a>
 </div>
+
+<form asp-controller="especialista" asp-action="Agregar" method="post" class="row g-4" novalidate>
+    @Html.AntiForgeryToken()
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Correo" class="form-label fw-semibold text-gradient">Correo Electrónico</label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Nombres" class="form-label fw-semibold text-gradient">Nombres</label>
+        <input asp-for="Nombres" class="form-control" />
+        <span asp-validation-for="Nombres" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Apellidos" class="form-label fw-semibold text-gradient">Apellidos</label>
+        <input asp-for="Apellidos" class="form-control" />
+        <span asp-validation-for="Apellidos" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="FechaNacimiento" class="form-label fw-semibold text-gradient">Fecha de Nacimiento</label>
+        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+        <span asp-validation-for="FechaNacimiento" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Sexo" class="form-label fw-semibold text-gradient">Sexo</label>
+        <select asp-for="Sexo" class="form-select">
+            <option value="">Seleccione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+        </select>
+        <span asp-validation-for="Sexo" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Telefono" class="form-label fw-semibold text-gradient">Teléfono</label>
+        <input asp-for="Telefono" class="form-control" id="telefonoInput" maxlength="9" placeholder="0000-0000" />
+        <span asp-validation-for="Telefono" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="Responsable" class="form-label fw-semibold text-gradient">Nombre del Responsable</label>
+        <input asp-for="Responsable" class="form-control" />
+        <span asp-validation-for="Responsable" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 col-md-6">
+        <label asp-for="ParentescoResponsable" class="form-label fw-semibold text-gradient">Parentesco del Responsable</label>
+        <input asp-for="ParentescoResponsable" class="form-control" />
+        <span asp-validation-for="ParentescoResponsable" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Direccion" class="form-label fw-semibold text-gradient">Dirección</label>
+        <textarea asp-for="Direccion" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Direccion" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12 text-end">
+        <button type="submit" class="btn btn-modern btn-primary-modern">
+            <i class="fas fa-save me-2"></i>Guardar Paciente
+        </button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#telefonoInput').mask('0000-0000');
+        });
+    </script>
+}

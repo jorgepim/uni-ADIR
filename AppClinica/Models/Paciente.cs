@@ -29,14 +29,24 @@ namespace AppClinica.Models
         [MaxLength(1)]
         public string Sexo { get; set; } = string.Empty;
 
-        public int IdEspecialista { get; set; }
+        [Required]
+        public string Telefono { get; set; } = string.Empty;
 
-        public DateTime FechaRegistro { get; set; }
+        public string? Responsable { get; set; } = string.Empty;
+        public string? ParentescoResponsable { get; set; } = string.Empty;
+
+        [Required]
+        public string? Direccion { get; set; } = string.Empty;  
+
+
+        public int? IdEspecialista { get; set; }
+
+        public DateTime? FechaRegistro { get; set; }
 
         // Relaciones
-        public Especialista Especialista { get; set; }
-        public Consentimiento Consentimiento { get; set; }
+        public virtual Especialista? Especialista { get; set; }
+        public virtual Consentimiento? Consentimiento { get; set; }
 
-        public ICollection<ResultadoTest> ResultadosTest { get; set; }
+        public ICollection<ResultadoTest>? ResultadosTest { get; set; }
     }
 }

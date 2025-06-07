@@ -1,0 +1,72 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "Seleccionar Módulo ADOS-2";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+}
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-controller="Especialista" asp-action="Evaluar" class="btn btn-link">&larr; Volver</a>
+    </div>
+
+    <h2 class="text-gradient mb-4">Selecciona la sección de ADI-R</h2>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="1" asp-route-idPaciente="@Model" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title"> A – Comunicación</h5>
+                    <p class="card-text text-muted">Niños con habla mínima o sin habla</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="2" asp-route-idPaciente="@Model" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title"> B – Interacción social</h5>
+                    <p class="card-text text-muted">Frases pero sin fluidez</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="3" asp-route-idPaciente="@Model" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title"> C – Conductas repetitivas</h5>
+                    <p class="card-text text-muted">Habla fluida, niños</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="4" asp-route-idPaciente="@Model" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title"> D – Comportamiento general</h5>
+                    <p class="card-text text-muted">Adolescentes y adultos</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-personalizada {
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card-personalizada:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-title {
+        color: #1d3557;
+        font-weight: 600;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+</style>

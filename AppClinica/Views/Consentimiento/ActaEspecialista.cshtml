@@ -1,4 +1,4 @@
-﻿@model AppClinica.Models.Usuario
+﻿@* @model AppClinica.Models.Especialista
 @{
     ViewData["Title"] = "Consentimiento del Especialista";
     var nombreCompleto = $"{ViewBag.EspecialistaDesencriptado.Nombres} {ViewBag.EspecialistaDesencriptado.Apellidos}";
@@ -34,6 +34,58 @@
                     <input class="form-check-input" type="checkbox" id="consentimientoEsp" required />
                     <label class="form-check-label" for="consentimientoEsp">
                         Acepto y me comprometo a cumplir con los principios descritos.
+                    </label>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success mt-4">Aceptar y Generar Acta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ *@
+
+
+@model AppClinica.Models.Especialista
+@{
+    ViewData["Title"] = "Consentimiento del Especialista";
+    var nombreCompleto = $"{ViewBag.EspecialistaDesencriptado.Nombres} {ViewBag.EspecialistaDesencriptado.Apellidos}";
+}
+<div class="container py-5" style="max-width: 850px; font-family: 'Segoe UI', sans-serif;">
+    <div class="card shadow-lg border-0">
+        <div class="card-body px-5">
+            <h2 class="text-center mb-4 text-primary">Acta de Consentimiento Profesional del Especialista</h2>
+
+            <p>
+                Yo, <strong>@nombreCompleto</strong>, identificado con número JVPP <strong>@Model.JVPP</strong>, declaro que he sido informado sobre mis responsabilidades como profesional de la salud que accede a datos sensibles de pacientes en el sistema TEA.
+            </p>
+
+            <p>Me comprometo a cumplir con las siguientes obligaciones:</p>
+            <ul class="mb-3">
+                <li>Tratar los datos clínicos y personales exclusivamente con fines diagnósticos y terapéuticos autorizados.</li>
+                <li>Respetar la confidencialidad de la información y no divulgarla sin autorización previa del paciente/responsable.</li>
+                <li>Guardar las medidas de seguridad necesarias conforme a la Ley de Protección de Datos Personales y la norma ISO/IEC 27701.</li>
+                <li>Reportar de forma inmediata cualquier incidente de seguridad que afecte la confidencialidad, integridad o disponibilidad de los datos.</li>
+                <li>Actualizar y proteger mis credenciales de acceso al sistema clínico.</li>
+            </ul>
+
+            <p class="mt-3">
+                Entiendo que este consentimiento estará vigente mientras mantenga un rol activo en el sistema y podrá ser renovado o revocado según las políticas institucionales.
+            </p>
+
+            <form asp-action="ConfirmarConsentimientoEspecialista" method="post">
+                <input type="hidden" name="idUsuario" value="@Model.IdUsuario" />
+
+                <div class="form-group mt-4">
+                    <label for="nombreFirmante" class="form-label">Nombre del especialista:</label>
+                    <input type="text" name="nombreFirmante" class="form-control" value="@nombreCompleto" readonly />
+                </div>
+
+                <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" id="consentimientoEsp" required />
+                    <label class="form-check-label" for="consentimientoEsp">
+                        Acepto y me comprometo a cumplir con las obligaciones legales y éticas aquí descritas.
                     </label>
                 </div>
 

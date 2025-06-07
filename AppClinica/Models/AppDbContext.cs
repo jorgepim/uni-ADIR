@@ -13,11 +13,11 @@ namespace AppClinica.Models
         public DbSet<Test> Tests { get; set; }
         public DbSet<SeccionTest> SeccionesTest { get; set; }
         public DbSet<Pregunta> Preguntas { get; set; }
-        public DbSet<RespuestaOpcion> RespuestasOpcion { get; set; }
         public DbSet<ResultadoTest> ResultadosTest { get; set; }
         public DbSet<RespuestaPaciente> RespuestasPaciente { get; set; }
         public DbSet<Consentimiento> Consentimientos { get; set; }
-
+        public DbSet<ComentarioSeccionResultado> ComentariosSeccionResultado { get; set; }
+ 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -30,9 +30,9 @@ namespace AppClinica.Models
             modelBuilder.Entity<Test>().HasKey(t => t.IdTest);
             modelBuilder.Entity<SeccionTest>().HasKey(s => s.IdSeccion);
             modelBuilder.Entity<Pregunta>().HasKey(p => p.IdPregunta);
-            modelBuilder.Entity<RespuestaOpcion>().HasKey(r => r.IdRespuesta);
             modelBuilder.Entity<ResultadoTest>().HasKey(r => r.IdResultado);
             modelBuilder.Entity<RespuestaPaciente>().HasKey(rp => rp.IdRespuestaPaciente);
+            modelBuilder.Entity<ComentarioSeccionResultado>().HasKey(c => c.IdComentarioSeccion);
 
             // Relaciones
             modelBuilder.Entity<Rol>()
@@ -101,11 +101,16 @@ namespace AppClinica.Models
                 .WithOne(rp => rp.ResultadoTest)
                 .HasForeignKey(rp => rp.IdResultado);
 
-            modelBuilder.Entity<RespuestaPaciente>()
-                .HasOne(rp => rp.RespuestaOpcion)
-                .WithMany()
-                .HasForeignKey(rp => rp.IdRespuestaOpcion)
-                .IsRequired(false);
+            modelBuilder.Entity<ComentarioSeccionResultado>()
+                .HasOne(c => c.ResultadoTest)
+                .WithMany(r => r.ComentariosSeccion)
+                .HasForeignKey(c => c.IdResultado);
+
+            modelBuilder.Entity<ComentarioSeccionResultado>()
+                .HasOne(c => c.SeccionTest)
+                .WithMany(s => s.ComentariosSeccion)
+                .HasForeignKey(c => c.IdSeccion);
+
         }
     }
 }
