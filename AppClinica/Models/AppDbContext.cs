@@ -86,10 +86,6 @@ namespace AppClinica.Models
                 .WithOne(p => p.SeccionTest)
                 .HasForeignKey(p => p.IdSeccion);
 
-            modelBuilder.Entity<Pregunta>()
-                .HasMany(p => p.RespuestasOpcion)
-                .WithOne(ro => ro.Pregunta)
-                .HasForeignKey(ro => ro.IdPregunta);
 
             modelBuilder.Entity<Pregunta>()
                 .HasMany(p => p.RespuestasPaciente)
