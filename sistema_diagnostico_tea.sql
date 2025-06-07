@@ -121,6 +121,8 @@ CREATE TABLE ComentariosSeccionResultado (
 );
 
 
+INSERT INTO Roles (NombreRol) VALUES ('Administrador');
+INSERT INTO Roles (NombreRol) VALUES ('Especialista');
 
 use ConsultaDB
 INSERT INTO Tests (NombreTest, Descripcion, Activo) VALUES ('ADI-R', 'Entrevista para el Diagnóstico del Autismo - Revisada', 1);
