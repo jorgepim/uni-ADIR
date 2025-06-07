@@ -53,11 +53,11 @@ namespace AppClinica.Controllers
                     IdPregunta = p.IdPregunta,
                     TextoPregunta = p.TextoPregunta,
                     TipoRespuesta = p.TipoRespuesta,
-                    Orden = p.Orden,
+                    Orden = (int)p.Orden,
                     Opciones = p.OpcionesRespuestaPregunta.Select(o => new OpcionRespuestaViewModel
                     {
                         IdOpcion = o.IdOpcion,
-                        Codigo = o.Codigo,
+                        Codigo = (int)o.Codigo,
                         Descripcion = o.Descripcion
                     }).ToList()
                 })
@@ -113,35 +113,35 @@ namespace AppClinica.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> ConfirmarEvaluacion()
-        {
-            var respuestasJson = TempData["RespuestasJson"]?.ToString();
-            if (string.IsNullOrEmpty(respuestasJson))
-                return RedirectToAction("Index");
+        //[HttpPost]
+        //public async Task<IActionResult> ConfirmarEvaluacion()
+        //{
+        //    var respuestasJson = TempData["RespuestasJson"]?.ToString();
+        //    if (string.IsNullOrEmpty(respuestasJson))
+        //        return RedirectToAction("Index");
 
-            var respuestas = JsonConvert.DeserializeObject<List<RespuestaPreguntaViewModel>>(respuestasJson);
+        //    var respuestas = JsonConvert.DeserializeObject<List<RespuestaPreguntaViewModel>>(respuestasJson);
 
-            // Aquí deberías guardar las respuestas en la base de datos
-            foreach (var r in respuestas)
-            {
-                var opcion = _context.OpcionesRespuestaPregunta
-                    .FirstOrDefault(o => o.IdOpcion == r.IdOpcionSeleccionada);
-                var respuesta = new RespuestaPaciente
-                {
-                    IdPregunta = r.IdPregunta,
-                    IdRespuestaOpcion = opcion?.Codigo ?? 0, // ✅ Aquí va el Código, no el Id
-                    RespuestaTexto = null, // Si no hay comentario
-                   /* IdResultado = idResultado*/ // Debes establecer esto también
+        //    // Aquí deberías guardar las respuestas en la base de datos
+        //    foreach (var r in respuestas)
+        //    {
+        //        var opcion = _context.OpcionesRespuestaPregunta
+        //            .FirstOrDefault(o => o.IdOpcion == r.IdOpcionSeleccionada);
+        //        var respuesta = new RespuestaPaciente
+        //        {
+        //            IdPregunta = r.IdPregunta,
+        //            IdRespuestaOpcion = opcion?.Codigo ?? 0, // ✅ Aquí va el Código, no el Id
+        //            RespuestaTexto = null, // Si no hay comentario
+        //           /* IdResultado = idResultado*/ // Debes establecer esto también
 
-                };
-                _context.RespuestasPaciente.Add(respuesta);
-            }
+        //        };
+        //        _context.RespuestasPaciente.Add(respuesta);
+        //    }
 
-            await _context.SaveChangesAsync();
+        //    await _context.SaveChangesAsync();
 
-            return RedirectToAction("ConfirmacionFinal");
-        }
+        //    return RedirectToAction("ConfirmacionFinal");
+        //}
 
 
 
