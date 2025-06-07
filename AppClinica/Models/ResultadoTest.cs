@@ -8,7 +8,7 @@ namespace AppClinica.Models
         public int? IdTest { get; set; }
         public int? IdPaciente { get; set; }
         public int? IdEspecialista { get; set; }
-        public DateTime? FechaRealizacion { get; set; }
+        public DateTime FechaRealizacion { get; set; }
         public string? Observaciones { get; set; }
 
         public Test? Test { get; set; }

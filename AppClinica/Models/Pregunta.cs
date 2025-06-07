@@ -9,7 +9,6 @@
         public int? Orden { get; set; }
 
         public SeccionTest? SeccionTest { get; set; }
-        public ICollection<RespuestaOpcion>? RespuestasOpcion { get; set; }
         public ICollection<RespuestaPaciente>? RespuestasPaciente { get; set; }
     }
 }
