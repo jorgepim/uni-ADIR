@@ -15,10 +15,11 @@
         Elige el módulo adecuado según la edad y habilidades comunicativas del paciente.
     </p>
 
+
     <div class="row g-4 justify-content-center">
         <!-- Módulo Toddler -->
         <div class="col-md-4 col-lg-3">
-            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="0" asp-route-idPaciente="@Model" class="text-decoration-none">
+            <a asp-controller="Preguntas" asp-action="ADOS2" asp-route-modulo="T" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo Toddler</h5>
                     <p class="card-text text-muted">Niños de 12 a 30 meses con retrasos en el lenguaje.</p>
@@ -28,7 +29,7 @@
 
         <!-- Módulo 1 -->
         <div class="col-md-4 col-lg-3">
-            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="1" asp-route-idPaciente="@Model" class="text-decoration-none">
+            <a asp-controller="Preguntas" asp-action="ADOS2" asp-route-modulo="1" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 1</h5>
                     <p class="card-text text-muted">Niños sin habla o con uso mínimo de palabras.</p>
@@ -38,7 +39,7 @@
 
         <!-- Módulo 2 -->
         <div class="col-md-4 col-lg-3">
-            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="2" asp-route-idPaciente="@Model" class="text-decoration-none">
+            <a asp-controller="Preguntas" asp-action="ADOS2" asp-route-modulo="2" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 2</h5>
                     <p class="card-text text-muted">Niños que usan frases pero no tienen habla fluida.</p>
@@ -48,7 +49,7 @@
 
         <!-- Módulo 3 -->
         <div class="col-md-4 col-lg-3">
-            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="3" asp-route-idPaciente="@Model" class="text-decoration-none">
+            <a asp-controller="Preguntas" asp-action="ADOS2" asp-route-modulo="3" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 3</h5>
                     <p class="card-text text-muted">Niños con habla fluida y habilidades sociales básicas.</p>
@@ -58,7 +59,7 @@
 
         <!-- Módulo 4 -->
         <div class="col-md-4 col-lg-3">
-            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="4" asp-route-idPaciente="@Model" class="text-decoration-none">
+            <a asp-controller="Preguntas" asp-action="ADOS2" asp-route-modulo="4" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 4</h5>
                     <p class="card-text text-muted">Adolescentes y adultos con habla fluida.</p>

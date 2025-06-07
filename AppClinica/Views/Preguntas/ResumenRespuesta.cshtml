@@ -1,0 +1,39 @@
+﻿@model List<AppClinica.Models.ViewModels.ResumenRespuestaViewModel>
+
+@{
+    ViewData["Title"] = "Resumen de Respuestas";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Resumen de Respuestas</h2>
+
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Pregunta</th>
+                <th>Respuesta seleccionada</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model[i].TextoPregunta</td>
+                    <td>(@Model[i].CodigoSeleccionado) @Model[i].OpcionSeleccionada</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @* <form method="post" asp-action="ConfirmarEvaluacion">
+        <button type="submit" class="btn btn-success me-2">Confirmar y guardar evaluación</button>
+        <a asp-action="ADOS2" asp-route-modulo="@ViewBag.Modulo" asp-route-idPaciente="@ViewBag.IdPaciente" class="btn btn-outline-secondary">Volver y editar</a>
+    </form> *@
+
+    <button type="submit" class="btn btn-success me-2">Confirmar y guardar evaluación</button>
+    <a asp-controller="especialista" asp-action="TestAdos" class="btn btn-outline-secondary">Volver</a>
+
+</div>

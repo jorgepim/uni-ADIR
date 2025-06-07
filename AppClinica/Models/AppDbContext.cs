@@ -17,6 +17,7 @@ namespace AppClinica.Models
         public DbSet<ResultadoTest> ResultadosTest { get; set; }
         public DbSet<RespuestaPaciente> RespuestasPaciente { get; set; }
         public DbSet<Consentimiento> Consentimientos { get; set; }
+        public DbSet<OpcionRespuesta> OpcionesRespuestaPregunta { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,8 @@ namespace AppClinica.Models
             modelBuilder.Entity<RespuestaOpcion>().HasKey(r => r.IdRespuesta);
             modelBuilder.Entity<ResultadoTest>().HasKey(r => r.IdResultado);
             modelBuilder.Entity<RespuestaPaciente>().HasKey(rp => rp.IdRespuestaPaciente);
+            modelBuilder.Entity<OpcionRespuesta>().HasKey(o => o.IdOpcion);
+
 
             // Relaciones
             modelBuilder.Entity<Rol>()
@@ -106,6 +109,12 @@ namespace AppClinica.Models
                 .WithMany()
                 .HasForeignKey(rp => rp.IdRespuestaOpcion)
                 .IsRequired(false);
+
+            modelBuilder.Entity<Pregunta>()
+                .HasMany(p => p.OpcionesRespuestaPregunta)
+                .WithOne(o => o.Pregunta)
+                .HasForeignKey(o => o.IdPregunta);
+
         }
     }
 }
