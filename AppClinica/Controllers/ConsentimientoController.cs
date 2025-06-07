@@ -49,19 +49,23 @@ namespace AppClinica.Controllers
 
             if (usuario == null || usuario.Especialista == null) return NotFound();
 
+            var especialista = usuario.Especialista;
+
             var desencriptado = new Especialista
             {
-                Nombres = _aes.Desencriptar(usuario.Especialista.Nombres),
-                Apellidos = _aes.Desencriptar(usuario.Especialista.Apellidos),
-                Especialidad = _aes.Desencriptar(usuario.Especialista.Especialidad),
-                Telefono = _aes.Desencriptar(usuario.Especialista.Telefono),
-                Direccion = _aes.Desencriptar(usuario.Especialista.Direccion ?? ""),
-                JVPP = _aes.Desencriptar(usuario.Especialista.JVPP)
+                Nombres = _aes.Desencriptar(especialista.Nombres),
+                Apellidos = _aes.Desencriptar(especialista.Apellidos),
+                Especialidad = _aes.Desencriptar(especialista.Especialidad),
+                Telefono = _aes.Desencriptar(especialista.Telefono),
+                Direccion = _aes.Desencriptar(especialista.Direccion ?? ""),
+                JVPP = _aes.Desencriptar(especialista.JVPP)
             };
 
             ViewBag.EspecialistaDesencriptado = desencriptado;
-            return View(usuario);
+
+            return View(especialista); // ✅ Ahora el modelo es del tipo correcto
         }
+
 
         // Confirmar y generar acta paciente
         [HttpPost]

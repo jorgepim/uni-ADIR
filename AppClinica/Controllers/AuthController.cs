@@ -169,12 +169,12 @@ namespace GAlap1p3.Controllers
 
             // Generar URL con el token sin cifrar
             var callbackUrl = Url.Action("Restablecer", "Auth", new { email = model.Correo, token = rawToken }, protocol: Request.Scheme);
-            var body = $"Haz clic aquí para restablecer tu contraseña: <a href='{callbackUrl}'>Restablecer</a>";
+            var body = $"Haz clic aquí para restablecer tu contraseña: {callbackUrl} Restablecer";
 
             await _emailService.SendEmailAsync(model.Correo, "Restablecer contraseña", body);
 
             ViewBag.Mensaje = "Se ha enviado un correo para restablecer tu contraseña.";
-            return View("RecuperarConfirmacion");
+            return View("Login");
         }
 
         // GET: Mostrar formulario para nueva contraseña
