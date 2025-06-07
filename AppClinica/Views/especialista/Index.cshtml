@@ -42,7 +42,7 @@
     <h2 class="mb-4 text-center" style="color: #1d3557;">Panel de Especialista</h2>
 
     <div class="row g-4">
-        <div class="col-md-6 col-lg-6">
+
             <div class="card card-panel shadow-sm h-100">
                 <div class="card-body text-center">
                     <h5 class="card-title">Mis Pacientes</h5>
@@ -55,21 +55,6 @@
                 </div>
 
             </div>
-        </div>
 
-        <div class="col-md-6 col-lg-6">
-            <div class="card card-panel shadow-sm h-100">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Evaluaciones Pendientes</h5>
-                    <p class="display-6">📝📝📝</p>
-                    <p class="display-6">@ViewBag.EvaluacionesPendientes</p>
-                </div>
-
-                <div class="card-footer text-center" style="background-color: #a8dadc;">
-                    <a asp-controller="especialista" asp-action="evaluar" class="text-decoration-none text-dark">Iniciar evaluación</a>
-                </div>
-
-            </div>
-        </div>
     </div>
 </main>
