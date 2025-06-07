@@ -71,31 +71,25 @@
         }
 
         @@keyframes fadeIn {
-            from
+            from {
+                opacity: 0;
+            }
 
-        {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-
+            to {
+                opacity: 1;
+            }
         }
 
         @@keyframes slideUp {
-            from
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-        {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .modal-content-custom {
@@ -375,23 +369,20 @@
                 transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
             }
 
-       @@media (max-width: 768px) {
-            .modal-content-custom
+        @@media (max-width: 768px) {
+            .modal-content-custom {
+                margin: 10px;
+                padding: 25px;
+                max-width: none;
+            }
 
-        {
-            margin: 10px;
-            padding: 25px;
-            max-width: none;
-        }
+            .modal-title {
+                font-size: 24px;
+            }
 
-        .modal-title {
-            font-size: 24px;
-        }
-
-        .row > .col {
-            margin-bottom: 15px;
-        }
-
+            .row > .col {
+                margin-bottom: 15px;
+            }
         }
 
         /* Animaciones de entrada */
@@ -400,18 +391,15 @@
         }
 
         @@keyframes slideInUp {
-            from
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
 
-        {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Estilos para inputs con error */
@@ -443,12 +431,9 @@
             }
 
         @@keyframes spin {
-            to
-
-        {
-            transform: rotate(360deg);
-        }
-
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -615,38 +600,21 @@
             });
 
             // Máscara para JVPP
-            $('#Especialista_JVPP').on('input', function(e) {
-                let value = e.target.value.toUpperCase().replace(/[^A-Z0-9/]/g, '');
+                    $('#Especialista_JVPP').on('input', function (e) {
+            let input = e.target;
+            let raw = input.value.replace(/[^0-9]/g, '');
 
-                // Formato: JVPP-1234/2021
-                if (value.length > 4 && !value.startsWith('JVPP-')) {
-                    if (value.startsWith('JVPP')) {
-                        value = 'JVPP-' + value.slice(4);
-                    } else {
-                        value = 'JVPP-' + value;
-                    }
-                }
+            // Asegurar que hay al menos 4 dígitos para el número
+            let numero = raw.slice(0, 4);
+            let anio = raw.slice(4, 8);
 
-                // Añadir el slash después de los dígitos
-                let parts = value.split('-');
-                if (parts.length > 1) {
-                    let numberPart = parts[1].replace(/[^0-9]/g, '');
-                    let yearPart = parts[1].replace(/^[0-9]*/, '').replace(/[^0-9]/g, '');
+            let resultado = 'JVPP-';
+            if (numero.length > 0) resultado += numero;
+            if (anio.length > 0) resultado += '/' + anio;
 
-                    if (numberPart.length > 4) {
-                        yearPart = numberPart.slice(4) + yearPart;
-                        numberPart = numberPart.slice(0, 4);
-                    }
+            input.value = resultado;
+        });
 
-                    if (yearPart.length > 0) {
-                        value = 'JVPP-' + numberPart + '/' + yearPart.slice(0, 4);
-                    } else if (numberPart.length > 0) {
-                        value = 'JVPP-' + numberPart;
-                    }
-                }
-
-                e.target.value = value;
-            });
 
             // Toggle password visibility
             $('.toggle-password').click(function() {

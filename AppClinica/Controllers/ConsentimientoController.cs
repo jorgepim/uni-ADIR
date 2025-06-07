@@ -35,7 +35,18 @@ namespace AppClinica.Controllers
                 paciente.Especialista.Nombres = _aes.Desencriptar(paciente.Especialista.Nombres);
                 paciente.Especialista.Apellidos = _aes.Desencriptar(paciente.Especialista.Apellidos);
             }
-
+            var desencriptado = new Paciente
+            {
+                Nombres = _aes.Desencriptar(paciente.Nombres),
+                Apellidos = _aes.Desencriptar(paciente.Apellidos),
+                Telefono = _aes.Desencriptar(paciente.Telefono),
+                Direccion = _aes.Desencriptar(paciente.Direccion ?? ""),
+                Correo = _aes.Desencriptar(paciente.Correo ?? ""),
+                Responsable =  _aes.Desencriptar(paciente.Responsable ?? ""),
+                FechaNacimiento = paciente.FechaNacimiento,
+                Especialista = paciente.Especialista
+            };
+            ViewBag.PacienteDesencriptado = desencriptado;
             return View(paciente);
         }
 
@@ -80,14 +91,24 @@ namespace AppClinica.Controllers
                 NombreFirmante = nombreFirmante,
                 FechaConsentimiento = DateTime.Now
             };
-
+            var PacienteDesencriptado = new Paciente
+            {
+                Nombres = _aes.Desencriptar(paciente.Nombres),
+                Apellidos = _aes.Desencriptar(paciente.Apellidos),
+                Telefono = _aes.Desencriptar(paciente.Telefono),
+                Direccion = _aes.Desencriptar(paciente.Direccion ?? ""),
+                Correo = _aes.Desencriptar(paciente.Correo ?? ""),
+                Responsable = _aes.Desencriptar(paciente.Responsable ?? ""),
+                FechaNacimiento = paciente.FechaNacimiento,
+                Especialista = paciente.Especialista
+            };
             _context.Consentimientos.Add(consentimiento);
             await _context.SaveChangesAsync();
 
             paciente.IdConsentimiento = consentimiento.IdConsentimiento;
             await _context.SaveChangesAsync();
 
-            string pdfPath = await _pdfService.GenerarActaPacienteAsync(paciente, consentimiento);
+            string pdfPath = await _pdfService.GenerarActaPacienteAsync(PacienteDesencriptado, consentimiento);
             consentimiento.RutaArchivo = pdfPath;
             await _context.SaveChangesAsync();
             var correo = _aes.Desencriptar(paciente.Correo);

@@ -29,7 +29,10 @@
 @model AppClinica.Models.Paciente
 @{
     ViewData["Title"] = "Consentimiento del Paciente";
-    var nombreCompleto = $"{Model.Nombres} {Model.Apellidos}";
+    var nombreCompleto = $"{ViewBag.PacienteDesencriptado.Nombres} {ViewBag.PacienteDesencriptado.Apellidos}";
+    var fechaNacimiento = ViewBag.PacienteDesencriptado.FechaNacimiento;
+    var correo = ViewBag.PacienteDesencriptado.Correo;
+    var Responsable = ViewBag.PacienteDesencriptado.Responsable ?? "No especificado";
 }
 
 <!DOCTYPE html>
@@ -493,10 +496,10 @@
                 <div class="professional-info">
                     <h4><i class="fas fa-user-injured"></i> Datos del Paciente</h4>
                     <div class="info-item"><i class="fas fa-user"></i><strong>@nombreCompleto</strong></div>
-                    <div class="info-item"><i class="fas fa-calendar"></i><strong>Fecha de Nacimiento:</strong> @Model.FechaNacimiento.ToShortDateString()</div>
+                    <div class="info-item"><i class="fas fa-calendar"></i><strong>Fecha de Nacimiento:</strong> @fechaNacimiento.ToShortDateString()</div>
                     <div class="info-item"><i class="fas fa-venus-mars"></i><strong>Sexo:</strong> @(Model.Sexo == "M" ? "Masculino" : "Femenino")</div>
-                    <div class="info-item"><i class="fas fa-user-shield"></i><strong>Responsable Legal:</strong> @Model.Responsable</div>
-                    <div class="info-item"><i class="fas fa-envelope"></i><strong>Correo:</strong> @Model.Correo</div>
+                    <div class="info-item"><i class="fas fa-user-shield"></i><strong>Responsable Legal:</strong> @Responsable</div>
+                    <div class="info-item"><i class="fas fa-envelope"></i><strong>Correo:</strong> @correo</div>
                 </div>
 
                 <form asp-action="ConfirmarConsentimientoPaciente" method="post" id="consentForm">

@@ -16,6 +16,8 @@ namespace AppClinica.Models.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*[^A-Za-z\d]).{6,}$",
+    ErrorMessage = "Debe tener al menos 6 caracteres, una letra y un carácter especial.")]
         public string NuevaContrasena { get; set; }
 
         [Required]

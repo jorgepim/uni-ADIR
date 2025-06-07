@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Consentimiento del Especialista";
     var nombreCompleto = $"{ViewBag.EspecialistaDesencriptado.Nombres} {ViewBag.EspecialistaDesencriptado.Apellidos}";
+    var especialidad = ViewBag.EspecialistaDesencriptado.Especialidad ?? "No especificada";
+    var jvpp = ViewBag.EspecialistaDesencriptado.JVPP ?? "No especificado";
 }
 
 <!DOCTYPE html>
@@ -485,17 +487,17 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-certificate"></i>
-                        <strong>JVPP: @Model.JVPP</strong>
+                        <strong>JVPP: @jvpp</strong>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-stethoscope"></i>
-                        <strong>Especialidad: @Model.Especialidad</strong>
+                        <strong>Especialidad: @especialidad</strong>
                     </div>
                 </div>
 
                 <div class="content-section">
                     <p class="lead">
-                        Yo, <strong>@nombreCompleto</strong>, identificado con número JVPP <strong>@Model.JVPP</strong>,
+                        Yo, <strong>@nombreCompleto</strong>, identificado con número JVPP <strong>@jvpp</strong>,
                         declaro que he sido informado sobre mis responsabilidades como profesional de la salud que
                         accede a datos sensibles de pacientes en el sistema TEA.
                     </p>
