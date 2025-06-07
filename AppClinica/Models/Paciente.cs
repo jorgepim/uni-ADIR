@@ -41,7 +41,7 @@ namespace AppClinica.Models
 
         public int? IdEspecialista { get; set; }
 
-        public DateTime FechaRegistro { get; set; }
+        public DateTime? FechaRegistro { get; set; }
 
         // Relaciones
         public virtual Especialista? Especialista { get; set; }

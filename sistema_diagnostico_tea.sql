@@ -21,6 +21,7 @@ CREATE TABLE Consentimientos (
 CREATE TABLE Usuarios (
     IdUsuario INT IDENTITY(1,1) PRIMARY KEY,
     IdConsentimiento INT,
+    TokenRecuperacion NVARCHAR(255),
     NombreUsuario NVARCHAR(100) NOT NULL,
     Correo NVARCHAR(100) NOT NULL UNIQUE,
     Contrasena NVARCHAR(255) NOT NULL,

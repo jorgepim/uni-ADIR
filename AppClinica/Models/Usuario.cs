@@ -11,7 +11,8 @@ namespace AppClinica.Models
         public int? IdConsentimiento { get; set; }
 
         public string? NombreUsuario { get; set; } = string.Empty;
-
+        [Required]
+        [EmailAddress]
         public string? Correo { get; set; } = string.Empty;
 
         [StringLength(100, MinimumLength = 8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
