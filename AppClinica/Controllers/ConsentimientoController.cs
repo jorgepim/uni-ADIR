@@ -90,12 +90,12 @@ namespace AppClinica.Controllers
             string pdfPath = await _pdfService.GenerarActaPacienteAsync(paciente, consentimiento);
             consentimiento.RutaArchivo = pdfPath;
             await _context.SaveChangesAsync();
-
-            await _emailService.SendEmailAsync(paciente.Correo, "Acta de Consentimiento Firmada", "Adjunto encontrará su consentimiento firmado.", pdfPath);
+            var correo = _aes.Desencriptar(paciente.Correo);
+            await _emailService.SendEmailAsync(correo, "Acta de Consentimiento Firmada", "Adjunto encontrará su consentimiento firmado.", pdfPath);
             consentimiento.EnviadoPorCorreo = true;
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Paciente");
+            return RedirectToAction("verPacientes", "especialista");
         }
 
         // Confirmar y generar acta especialista
