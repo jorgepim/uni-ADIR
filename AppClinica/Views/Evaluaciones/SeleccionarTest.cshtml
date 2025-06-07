@@ -1,0 +1,37 @@
+﻿@model AppClinica.Models.Paciente
+@inject AppClinica.Services.IAesEncryptionService _aes
+
+@{
+    ViewData["Title"] = "Seleccionar Prueba";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+
+    string nombreCompleto = $"{_aes.Desencriptar(Model.Nombres)} {_aes.Desencriptar(Model.Apellidos)}";
+}
+
+<div class="container py-5">
+    <a asp-controller="Especialista" asp-action="verPacientes" class="btn btn-link mb-4">&larr; Volver</a>
+
+    <h2 class="text-primary fw-bold mb-3">Seleccionar prueba para evaluar</h2>
+    <p class="mb-4">Paciente: <strong>@nombreCompleto</strong></p>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <a asp-controller="Evaluaciones"
+               asp-action="Adir"
+               asp-route-idPaciente="@Model.IdPaciente"
+               class="btn btn-outline-dark w-100 py-4 shadow-sm rounded-4">
+                <h5 class="fw-bold">ADI-R</h5>
+                <p class="text-muted">Entrevista para el Diagnóstico del Autismo - Revisada</p>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a asp-controller="Evaluaciones"
+               asp-action="Ados2"
+               asp-route-idPaciente="@Model.IdPaciente"
+               class="btn btn-outline-dark w-100 py-4 shadow-sm rounded-4">
+                <h5 class="fw-bold">ADOS-2</h5>
+                <p class="text-muted">Escala de Observación para el Diagnóstico del Autismo</p>
+            </a>
+        </div>
+    </div>
+</div>

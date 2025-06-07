@@ -1,0 +1,34 @@
+﻿@model AppClinica.Models.ViewModels.EvaluarModuloAdirViewModel
+
+@{
+    ViewData["Title"] = "Preguntas ADI-R";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+}
+
+<div class="container py-5">
+    <a asp-controller="Evaluaciones" asp-action="Adir" asp-route-idPaciente="@Model.IdPaciente" class="btn btn-link mb-4">&larr; Volver a módulos</a>
+
+    <h2 class="fw-bold text-primary mb-3">Módulo: @Model.NombreSeccion</h2>
+
+    @if (Model.Preguntas.Any())
+    {
+        <form method="post" asp-action="GuardarRespuestas">
+            <input type="hidden" name="IdPaciente" value="@Model.IdPaciente" />
+            <input type="hidden" name="IdSeccion" value="@Model.IdSeccion" />
+
+            @foreach (var pregunta in Model.Preguntas)
+            {
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">[@pregunta.Orden] @pregunta.TextoPregunta</label>
+                    <input type="text" name="Respuestas[@pregunta.IdPregunta]" class="form-control" required />
+                </div>
+            }
+
+            <button type="submit" class="btn btn-success mt-3">Guardar respuestas</button>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-warning">No hay preguntas para esta sección.</div>
+    }
+</div>

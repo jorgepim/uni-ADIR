@@ -37,7 +37,7 @@
     <h2 class="mb-4 text-center" style="color: #1d3557;">Panel de Administración</h2>
 
     <div class="row g-4">
-        <div class="col-md-6 col-lg-4">
+
             <a asp-controller="Admin" asp-action="Gestionar_usuarios" class="card-link">
                 <div class="card card-panel shadow-sm h-100">
                     <div class="card-body text-center">
@@ -47,30 +47,6 @@
                     </div>
                 </div>
             </a>
-        </div>
 
-        <div class="col-md-6 col-lg-4">
-            <a asp-controller="Admin" asp-action="Gestionar_tests" class="card-link">
-                <div class="card card-panel shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Tests Disponibles</h5>
-                        <p class="display-6">🧠📝📋</p>
-                        <p class="display-6">@ViewBag.TotalTests</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-            <a asp-controller="Admin" asp-action="Gestionar_resultado" class="card-link">
-                <div class="card card-panel shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Resultados</h5>
-                        <p class="display-6">📊📄📈</p>
-                        <p class="display-6">@ViewBag.TotalResultados</p>
-                    </div>
-                </div>
-            </a>
-        </div>
     </div>
 </main>
