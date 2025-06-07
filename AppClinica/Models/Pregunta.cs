@@ -10,5 +10,7 @@
 
         public SeccionTest? SeccionTest { get; set; }
         public ICollection<RespuestaPaciente>? RespuestasPaciente { get; set; }
+
+        public ICollection<OpcionRespuesta> OpcionesRespuestaPregunta { get; set; }
     }
 }

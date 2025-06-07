@@ -87,7 +87,7 @@ namespace AppClinica.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Success"] = "Paciente agregado correctamente.";
-            return RedirectToAction("verPacientes");
+            return RedirectToAction("ActaPaciente", "Consentimiento", new {id=paciente.IdPaciente});
         }
 
 

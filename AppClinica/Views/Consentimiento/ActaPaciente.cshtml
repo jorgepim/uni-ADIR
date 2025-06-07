@@ -26,71 +26,555 @@
     </form>
 </div>
  *@
-
-
 @model AppClinica.Models.Paciente
 @{
-    ViewData["Title"] = "Consentimientos del Paciente";
+    ViewData["Title"] = "Consentimiento del Paciente";
+    var nombreCompleto = $"{ViewBag.PacienteDesencriptado.Nombres} {ViewBag.PacienteDesencriptado.Apellidos}";
+    var fechaNacimiento = ViewBag.PacienteDesencriptado.FechaNacimiento;
+    var correo = ViewBag.PacienteDesencriptado.Correo;
+    var Responsable = ViewBag.PacienteDesencriptado.Responsable ?? "No especificado";
 }
-<div class="container my-5" style="max-width: 900px; font-family: 'Segoe UI', sans-serif;">
-    <h2 class="text-center mb-4">Acta de Consentimientos Informados</h2>
 
-    <div class="mb-4 p-3 bg-light border rounded">
-        <h5>Datos del Paciente</h5>
-        <p><strong>Nombre:</strong> @Model.Nombres @Model.Apellidos</p>
-        <p><strong>Fecha de Nacimiento:</strong> @Model.FechaNacimiento.ToShortDateString()</p>
-        <p><strong>Sexo:</strong> @(Model.Sexo == "M" ? "Masculino" : "Femenino")</p>
-        <p><strong>Responsable Legal:</strong> @Model.Responsable</p>
-        <p><strong>Correo de contacto:</strong> @Model.Correo</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --success-color: #059669;
+            --info-color: #0891b2;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--gradient-primary);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+                pointer-events: none;
+            }
+
+        .document-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: var(--shadow-hover);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @@keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .document-header {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .document-header::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+                animation: rotate 20s linear infinite;
+            }
+
+        @@keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .document-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .document-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .document-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .document-body {
+            padding: 3rem 2.5rem;
+        }
+
+        .professional-info {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .professional-info::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: rgba(37, 99, 235, 0.05);
+                border-radius: 50%;
+                transform: translate(25%, -25%);
+            }
+
+            .professional-info h4 {
+                color: var(--primary-color);
+                font-weight: 600;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+            .info-item i {
+                color: var(--primary-color);
+                width: 20px;
+                margin-right: 0.75rem;
+            }
+
+        .obligations-section {
+            margin: 2.5rem 0;
+        }
+
+        .obligations-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .obligations-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .obligation-item {
+            background: rgba(37, 99, 235, 0.03);
+            border-left: 3px solid var(--primary-color);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0 12px 12px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+            .obligation-item:hover {
+                background: rgba(37, 99, 235, 0.08);
+                transform: translateX(5px);
+            }
+
+            .obligation-item::before {
+                content: counter(obligation-counter);
+                counter-increment: obligation-counter;
+                position: absolute;
+                left: -15px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: var(--primary-color);
+                color: white;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 0.875rem;
+            }
+
+        .obligations-list {
+            counter-reset: obligation-counter;
+        }
+
+        .commitment-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            position: relative;
+        }
+
+            .commitment-section::before {
+                content: '\f06a';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                top: 1rem;
+                right: 1.5rem;
+                font-size: 2rem;
+                color: var(--warning-color);
+                opacity: 0.3;
+            }
+
+        .form-section {
+            background: rgba(249, 250, 251, 0.8);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-control {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+            .form-control:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+                background: white;
+            }
+
+        .form-check {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            margin: 1.5rem 0;
+        }
+
+            .form-check:hover {
+                border-color: var(--primary-color);
+                box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+            }
+
+        .form-check-input {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.75rem;
+            border: 2px solid var(--primary-color);
+        }
+
+            .form-check-input:checked {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+            }
+
+        .form-check-label {
+            font-weight: 500;
+            color: var(--dark-color);
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .submit-section {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(229, 231, 235, 0.5);
+            margin-top: 2rem;
+        }
+
+        .btn-accept {
+            background: linear-gradient(135deg, var(--success-color) 0%, #047857 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn-accept::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .btn-accept:hover::before {
+                left: 100%;
+            }
+
+            .btn-accept:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+            }
+
+            .btn-accept:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+        .legal-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(229, 231, 235, 0.5);
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        @@media (max-width: 768px) {
+            .document-container {
+                padding: 0 0.5rem;
+            }
+
+            .document-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .document-title {
+                font-size: 1.5rem;
+            }
+
+            .document-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .professional-info,
+            .form-section,
+            .commitment-section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animaciones de entrada */
+        .obligation-item {
+            animation: slideInLeft 0.6s ease-out backwards;
+        }
+
+            .obligation-item:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .obligation-item:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .obligation-item:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .obligation-item:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .obligation-item:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+
+        @@keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <div class="document-card">
+            <div class="document-header">
+                <div class="document-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h1 class="document-title">Acta de Consentimiento Informado</h1>
+                <p class="document-subtitle">Paciente en el Sistema TEA</p>
+            </div>
+
+            <div class="document-body">
+                <div class="professional-info">
+                    <h4><i class="fas fa-user-injured"></i> Datos del Paciente</h4>
+                    <div class="info-item"><i class="fas fa-user"></i><strong>@nombreCompleto</strong></div>
+                    <div class="info-item"><i class="fas fa-calendar"></i><strong>Fecha de Nacimiento:</strong> @fechaNacimiento.ToShortDateString()</div>
+                    <div class="info-item"><i class="fas fa-venus-mars"></i><strong>Sexo:</strong> @(Model.Sexo == "M" ? "Masculino" : "Femenino")</div>
+                    <div class="info-item"><i class="fas fa-user-shield"></i><strong>Responsable Legal:</strong> @Responsable</div>
+                    <div class="info-item"><i class="fas fa-envelope"></i><strong>Correo:</strong> @correo</div>
+                </div>
+
+                <form asp-action="ConfirmarConsentimientoPaciente" method="post" id="consentForm">
+                    <input type="hidden" name="idPaciente" value="@Model.IdPaciente" />
+
+                    <div class="obligations-section">
+                        <h3 class="obligations-title"><i class="fas fa-file-signature"></i> Consentimientos</h3>
+                        <ul class="obligations-list">
+                            <li class="obligation-item">
+                                <strong>Evaluación (ADOS-2 y ADI-R):</strong>
+                                Autorizo al profesional a realizar evaluaciones diagnósticas con herramientas ADOS-2 y ADI-R, entendiendo su finalidad y seguridad.
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" name="consentEvaluacion" required />
+                                    <label class="form-check-label">Acepto este consentimiento</label>
+                                </div>
+                            </li>
+                            <li class="obligation-item">
+                                <strong>Tratamiento de Datos Personales:</strong>
+                                Acepto el tratamiento seguro de mis datos conforme a la Ley de Protección de Datos Personales.
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" name="consentDatos" required />
+                                    <label class="form-check-label">Acepto este consentimiento</label>
+                                </div>
+                            </li>
+                            <li class="obligation-item">
+                                <strong>Grabaciones (opcional):</strong>
+                                Autorizo la grabación de sesiones únicamente para fines clínicos o formativos.
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" name="consentGrabacion" />
+                                    <label class="form-check-label">Acepto este consentimiento</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="nombreFirmante" class="form-label">
+                                <i class="fas fa-signature"></i> Nombre del Tutor o Responsable Legal:
+                            </label>
+                            <input type="text" name="nombreFirmante" class="form-control" required />
+                        </div>
+
+                        <div class="submit-section">
+                            <button type="submit" class="btn-accept" id="submitBtn">
+                                <i class="fas fa-file-signature"></i> Aceptar y Generar Acta
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="legal-footer">
+                    <p>
+                        <i class="fas fa-gavel"></i>
+                        Este documento se rige por las leyes de El Salvador y normativas internacionales de protección de datos.<br>
+                        Fecha de generación: <strong id="currentDate"></strong>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <form asp-action="ConfirmarConsentimientoPaciente" method="post">
-        <input type="hidden" name="idPaciente" value="@Model.IdPaciente" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentDate = new Date().toLocaleDateString('es-ES', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+            document.getElementById('currentDate').textContent = currentDate;
 
-        <!-- Consentimiento 1 -->
-        <div class="mb-4">
-            <h5>1. Consentimiento para la Evaluación (ADOS-2 y ADI-R)</h5>
-            <p>
-                Autorizo al profesional de la salud a realizar evaluaciones diagnósticas con las herramientas ADOS-2 y ADI-R. Se me ha explicado que estas pruebas forman parte del proceso de evaluación para el diagnóstico de TEA y que su aplicación no genera daño físico ni psicológico.
-            </p>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="consentEvaluacion" required />
-                <label class="form-check-label">Acepto este consentimiento</label>
-            </div>
-        </div>
-
-        <!-- Consentimiento 2 -->
-        <div class="mb-4">
-            <h5>2. Consentimiento para el Tratamiento de Datos Personales</h5>
-            <p>
-                Acepto que los datos personales y clínicos recopilados durante el proceso de evaluación puedan ser tratados, almacenados y protegidos conforme a la Ley de Protección de Datos Personales de El Salvador y la norma ISO/IEC 27701. Tengo derecho a solicitar el acceso, corrección o eliminación de mis datos en cualquier momento.
-            </p>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="consentDatos" required />
-                <label class="form-check-label">Acepto este consentimiento</label>
-            </div>
-        </div>
-
-        <!-- Consentimiento 3 -->
-        <div class="mb-4">
-            <h5>3. Consentimiento para Grabaciones (opcional)</h5>
-            <p>
-                En caso de requerirse, autorizo la grabación (video/audio) de las sesiones de evaluación para fines de revisión clínica, supervisión o formación interna. Estas grabaciones serán tratadas como confidenciales y no se difundirán públicamente sin autorización explícita adicional.
-            </p>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="consentGrabacion" />
-                <label class="form-check-label">Acepto este consentimiento</label>
-            </div>
-        </div>
-
-        <!-- Firmante -->
-        <div class="form-group mt-4">
-            <label for="nombreFirmante"><strong>Nombre del Tutor o Responsable Legal:</strong></label>
-            <input type="text" name="nombreFirmante" class="form-control" required />
-        </div>
-
-        <div class="text-center mt-5">
-            <button type="submit" class="btn btn-success btn-lg">Aceptar y Generar Acta</button>
-        </div>
-    </form>
-</div>
+            const submitBtn = document.getElementById('submitBtn');
+            document.getElementById('consentForm').addEventListener('submit', function () {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+                submitBtn.disabled = true;
+            });
+        });
+    </script>
+</body>
+</html>

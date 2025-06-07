@@ -9,6 +9,8 @@ namespace AppClinica.Models
         public string? NombreSeccion { get; set; } = string.Empty;
         public int? Orden { get; set; }
 
+        public string? modulo { get; set; }
+
         public Test? Test { get; set; }
         public ICollection<Pregunta>? Preguntas { get; set; }
         public ICollection<ComentarioSeccionResultado>? ComentariosSeccion { get; set; }
