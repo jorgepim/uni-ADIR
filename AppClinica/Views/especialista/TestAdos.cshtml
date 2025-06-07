@@ -1,4 +1,4 @@
-﻿@model int 
+﻿@model int
 
 @{
     ViewData["Title"] = "Seleccionar Módulo ADOS-2";
@@ -7,41 +7,61 @@
 
 <div class="container py-5">
     <div class="mb-4">
-        <a asp-controller="Especialista" asp-action="Evaluar" class="btn btn-link">&larr; Volver</a>
+        <a asp-controller="Especialista" asp-action="Evaluar" class="btn btn-outline-secondary">&larr; Volver</a>
     </div>
 
-    <h2 class="text-gradient mb-4">Selecciona el módulo del ADOS-2</h2>
+    <h2 class="mb-4 text-center fw-bold">Selecciona el módulo del ADOS-2</h2>
+    <p class="text-center text-muted mb-5">
+        Elige el módulo adecuado según la edad y habilidades comunicativas del paciente.
+    </p>
 
-    <div class="row g-4">
-        <div class="col-md-3">
+    <div class="row g-4 justify-content-center">
+        <!-- Módulo Toddler -->
+        <div class="col-md-4 col-lg-3">
+            <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="0" asp-route-idPaciente="@Model" class="text-decoration-none">
+                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                    <h5 class="card-title">Módulo Toddler</h5>
+                    <p class="card-text text-muted">Niños de 12 a 30 meses con retrasos en el lenguaje.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Módulo 1 -->
+        <div class="col-md-4 col-lg-3">
             <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="1" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 1</h5>
-                    <p class="card-text text-muted">Niños con habla mínima o sin habla</p>
+                    <p class="card-text text-muted">Niños sin habla o con uso mínimo de palabras.</p>
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+
+        <!-- Módulo 2 -->
+        <div class="col-md-4 col-lg-3">
             <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="2" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 2</h5>
-                    <p class="card-text text-muted">Frases pero sin fluidez</p>
+                    <p class="card-text text-muted">Niños que usan frases pero no tienen habla fluida.</p>
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+
+        <!-- Módulo 3 -->
+        <div class="col-md-4 col-lg-3">
             <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="3" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 3</h5>
-                    <p class="card-text text-muted">Habla fluida, niños</p>
+                    <p class="card-text text-muted">Niños con habla fluida y habilidades sociales básicas.</p>
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+
+        <!-- Módulo 4 -->
+        <div class="col-md-4 col-lg-3">
             <a asp-controller="Test" asp-action="IniciarModuloAdos" asp-route-modulo="4" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
                     <h5 class="card-title">Módulo 4</h5>
-                    <p class="card-text text-muted">Adolescentes y adultos</p>
+                    <p class="card-text text-muted">Adolescentes y adultos con habla fluida.</p>
                 </div>
             </a>
         </div>
@@ -50,23 +70,30 @@
 
 <style>
     .card-personalizada {
-        background-color: #f1f1f1;
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
         border: none;
         border-radius: 20px;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .card-personalizada:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
+        .card-personalizada:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
 
     .card-title {
-        color: #1d3557;
-        font-weight: 600;
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 10px;
     }
 
     .card-text {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        color: #6c757d;
+    }
+
+    h2.text-center {
+        color: #1d3557;
     }
 </style>
+
