@@ -51,15 +51,21 @@
 
     <h1 class="h4 mb-4 titulo-pagina" id="tituloEvaluar">Seleccionar Paciente</h1>
 
-    <div class="row g-4">
-        <div class="col-md-6">
-            <a asp-controller="especialista" asp-action="test_adir" class="text-decoration-none">
-                <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
-                    <h5 class="card-title">ADI-R</h5>
-                    <p class="card-text text-muted">Entrevista para el Diagnóstico del Autismo - Revisada</p>
-                </div>
-            </a>
-        </div>
+
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <a asp-controller="Evaluaciones"
+           asp-action="SeleccionarTest"
+           asp-route-idPaciente="@Model"
+           class="text-decoration-none">
+            <div class="card card-personalizada text-center p-4 h-100 shadow-sm">
+                <h5 class="card-title">ADI-R</h5>
+                <p class="card-text text-muted">Entrevista para el Diagnóstico del Autismo - Revisada</p>
+            </div>
+        </a>
+    </div>
+</div>
         <div class="col-md-6">
             <a asp-controller="Especialista" asp-action="TestAdos" asp-route-idPaciente="@Model" class="text-decoration-none">
                 <div class="card card-personalizada text-center p-4 h-100 shadow-sm">

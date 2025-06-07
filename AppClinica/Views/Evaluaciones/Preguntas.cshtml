@@ -1,0 +1,248 @@
+﻿@model AppClinica.Models.ViewModels.EvaluarModuloAdirViewModel
+@{
+    ViewData["Title"] = "Evaluación ADI-R";
+    Layout = "~/Views/Shared/_LayoutEspecialista.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <!-- Header con navegación -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Adir" asp-route-idPaciente="@Model.IdPaciente" class="text-decoration-none">
+                            <i class="fas fa-arrow-left me-2"></i>Secciones ADI-R
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.NombreSeccion</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Información del paciente y sección -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-0 bg-light">
+                <div class="card-body py-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="h3 text-primary mb-1 fw-bold">@Model.NombreSeccion</h1>
+                            <p class="mb-0 text-muted">
+                                <i class="fas fa-user me-2"></i>
+                                Paciente: <strong class="text-dark">@Model.NombrePaciente</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <span class="badge bg-primary px-3 py-2">
+                                <i class="fas fa-clipboard-list me-1"></i>
+                                Evaluación ADI-R
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form asp-action="GuardarRespuestas" method="post" id="evaluacionForm">
+        <input type="hidden" name="IdPaciente" value="@Model.IdPaciente" />
+        <input type="hidden" name="IdSeccion" value="@Model.IdSeccion" />
+
+        <!-- Contador de progreso -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body py-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">Progreso de evaluación</small>
+                            <small class="text-muted">
+                                <span id="preguntasRespondidas">0</span> de @Model.Preguntas.Count preguntas
+                            </small>
+                        </div>
+                        <div class="progress mt-2" style="height: 6px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%" id="barraProgreso"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preguntas -->
+        <div class="row">
+            <div class="col-12">
+                @for (int i = 0; i < Model.Preguntas.Count; i++)
+                {
+                    <div class="card mb-4 shadow-sm border-0 pregunta-card" data-pregunta="@i">
+                        <div class="card-header bg-white border-bottom-0 py-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-secondary me-3 mt-1 px-3 py-2">@Model.Preguntas[i].Orden</span>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-0 fw-semibold text-dark">@Model.Preguntas[i].TextoPregunta</h5>
+                                </div>
+                                <i class="fas fa-check-circle text-success ms-2 d-none icono-completado"></i>
+                            </div>
+                        </div>
+
+                        <div class="card-body pt-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label class="form-label fw-medium text-muted small">Puntuación *</label>
+                                    <select name="Preguntas[@i].Puntuacion" class="form-select form-select-lg puntuacion-select" required>
+                                        <option value="">Seleccione una puntuación</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="8">8 (No aplica)</option>
+                                    </select>
+                                    <input type="hidden" name="Preguntas[@i].IdPregunta" value="@Model.Preguntas[i].IdPregunta" />
+                                    <input type="hidden" name="Preguntas[@i].Orden" value="@Model.Preguntas[i].Orden" />
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label class="form-label fw-medium text-muted small">Observaciones</label>
+                                    <textarea name="Preguntas[@i].Comentario"
+                                              class="form-control"
+                                              rows="3"
+                                              placeholder="Agregue observaciones específicas o ejemplos del comportamiento observado..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a asp-action="Adir" asp-route-idPaciente="@Model.IdPaciente"
+                       class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i>Cancelar
+                    </a>
+
+                    <div>
+                        <button type="button" class="btn btn-outline-primary btn-lg me-2" onclick="guardarBorrador()">
+                            <i class="fas fa-save me-2"></i>Guardar borrador
+                        </button>
+                        <button type="submit" class="btn btn-success btn-lg" id="btnGuardar">
+                            <i class="fas fa-check me-2"></i>Completar evaluación
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Scripts para funcionalidad -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectsPuntuacion = document.querySelectorAll('.puntuacion-select');
+        const barraProgreso = document.getElementById('barraProgreso');
+        const contadorRespuestas = document.getElementById('preguntasRespondidas');
+        const totalPreguntas = @Model.Preguntas.Count;
+
+        // Actualizar progreso cuando se selecciona una puntuación
+        selectsPuntuacion.forEach(select => {
+            select.addEventListener('change', function () {
+                actualizarProgreso();
+
+                // Mostrar/ocultar icono de completado
+                const card = this.closest('.pregunta-card');
+                const icono = card.querySelector('.icono-completado');
+
+                if (this.value) {
+                    icono.classList.remove('d-none');
+                    card.classList.add('border-success');
+                } else {
+                    icono.classList.add('d-none');
+                    card.classList.remove('border-success');
+                }
+            });
+        });
+
+        function actualizarProgreso() {
+            const respondidas = Array.from(selectsPuntuacion).filter(select => select.value !== '').length;
+            const porcentaje = (respondidas / totalPreguntas) * 100;
+
+            barraProgreso.style.width = porcentaje + '%';
+            contadorRespuestas.textContent = respondidas;
+
+            // Cambiar color de la barra según el progreso
+            if (porcentaje === 100) {
+                barraProgreso.className = 'progress-bar bg-success';
+            } else if (porcentaje >= 50) {
+                barraProgreso.className = 'progress-bar bg-warning';
+            } else {
+                barraProgreso.className = 'progress-bar bg-info';
+            }
+        }
+
+        // Validación antes de enviar
+        document.getElementById('evaluacionForm').addEventListener('submit', function (e) {
+            const respondidas = Array.from(selectsPuntuacion).filter(select => select.value !== '').length;
+
+            if (respondidas < totalPreguntas) {
+                e.preventDefault();
+
+                if (!confirm(`Hay ${totalPreguntas - respondidas} preguntas sin responder. ¿Está seguro de que desea continuar?`)) {
+                    return;
+                }
+            }
+        });
+
+        // Inicializar progreso
+        actualizarProgreso();
+    });
+
+    function guardarBorrador() {
+        // Aquí podrías implementar la funcionalidad de guardar borrador
+        alert('Funcionalidad de borrador pendiente de implementar');
+    }
+
+    // Auto-guardar cada 2 minutos
+    setInterval(function () {
+        const datos = new FormData(document.getElementById('evaluacionForm'));
+        // Implementar auto-guardado aquí
+        console.log('Auto-guardado ejecutado');
+    }, 120000);
+</script>
+
+<style>
+    .pregunta-card {
+        transition: all 0.3s ease;
+    }
+
+        .pregunta-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        }
+
+    .form-select-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .progress {
+        border-radius: 10px;
+        background-color: #e9ecef;
+    }
+
+    .progress-bar {
+        border-radius: 10px;
+        transition: width 0.3s ease;
+    }
+
+    .badge {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .card-header {
+        border-radius: 0.5rem 0.5rem 0 0 !important;
+    }
+</style>
